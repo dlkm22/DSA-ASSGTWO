@@ -104,7 +104,6 @@ ItemType List::get(int index) {
 			currentIndex++;
 		}
 		if (temp != NULL) {
-			cout << temp->item;
 			return temp->item;
 		}
 	}
