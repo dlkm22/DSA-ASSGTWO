@@ -26,7 +26,7 @@ int main()
 
 
     while (option != 0) {
-        cout << "---------Menu---------\n[1] View incoming orders\n[2] Update Status of an order\n[3] View Customer information for an order\n[4] Create New Order\n[0] Exit\n----------------------" << endl;
+        cout << "---------Menu---------\n[1] View incoming orders\n[2] Update Status of an order\n[3] View Customer information for an order\n[4] Create New Order\n[5] Register New Account\n[0] Exit\n----------------------" << endl;
         cout << "Select operation: ";
         cin >> option;
 
@@ -66,6 +66,20 @@ int main()
             if (foodOption == 4) {
                 customerQueue.enqueue(foodList.get(3));
             }
+        }
+        else if (option == 5)
+        {
+            string newUsername;
+            string password;
+
+            cout << "Input New Username:" << endl;
+            cin >> newUsername;
+            cout << "Input New Password:" << endl;
+            cin >> password; 
+
+
+         
+
         }
 
         else if (option == 0) {
