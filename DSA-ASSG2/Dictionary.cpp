@@ -30,6 +30,10 @@ int Dictionary::charValue(char c)
 		else
 			return (int)c - (int)'a' + 26;
 	}
+	else if (isdigit(c))
+	{
+		return (int)c; 
+	}
 	else
 		return -1;
 

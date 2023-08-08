@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Queue.h"
 #include "List.h"
+#include "Dictionary.h"
+
 using namespace std;
 
 List populateFoodList(List foodList) {
@@ -16,6 +18,7 @@ int main()
     int option = 1;
     Queue orderQueue; //for admin
     Queue customerQueue; //for customer
+    Dictionary accountDictionary;
 
     List foodList;
     foodList.add("[1] WcChicken");
@@ -70,12 +73,16 @@ int main()
         else if (option == 5)
         {
             string newUsername;
-            string password;
+            string newPassword;
 
             cout << "Input New Username:" << endl;
             cin >> newUsername;
             cout << "Input New Password:" << endl;
-            cin >> password; 
+            cin >> newPassword; 
+
+            accountDictionary.add(newPassword, newUsername); 
+
+
 
 
          
