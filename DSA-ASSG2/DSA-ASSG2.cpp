@@ -13,6 +13,31 @@ List populateFoodList(List foodList) {
     return foodList;
 }
 
+void createNewOrder(List foodList, Queue& customerQueue) {
+    cout << "--Create New Order--" << endl;
+    for (int i = 0; i < foodList.getLength(); i++) {
+        cout << foodList.get(i) << endl;
+    }
+    int foodOption;
+    cout << "Select food choice: ";
+    cin >> foodOption;
+    for (int i = 0; i < foodList.getLength(); i++) {
+        if (i == (foodOption - 1)) {
+            customerQueue.enqueue(foodList.get(i));
+        }
+    }
+    string choice;
+    cout << "Order More? [Y/N]: ";
+    cin >> choice;
+    if (choice == "Y" || choice == "y") {
+        //createNewOrder(foodList, customerQueue);
+        cout << "ok thanks for support" << endl;
+    }
+    else {
+        cout << "Thank you for ordering, your order will be ready soon!" << endl;
+    }
+}
+
 int main()
 {
     int option = 1;
@@ -29,7 +54,7 @@ int main()
 
 
     while (option != 0) {
-        cout << "---------Menu---------\n[1] View incoming orders\n[2] Update Status of an order\n[3] View Customer information for an order\n[4] Create New Order\n[5] Register New Account\n[0] Exit\n----------------------" << endl;
+        cout << "---------Menu---------\n[1] View incoming orders\n[2] Update Status of an order\n[3] View Customer information for an order\n[4] Create New Order\n[5] Cancel Order\n[6] Register New Account\n[0] Exit\n----------------------" << endl;
         cout << "Select operation: ";
         cin >> option;
 
@@ -47,37 +72,21 @@ int main()
         }
         
         else if (option == 4) { //changes
-            cout << "--Create New Order--" << endl;
-            for (int i = 0; i < foodList.getLength(); i++) {
-                cout << foodList.get(i) << endl;
-            }
-            int foodOption;
-            cout << "Select food choice: ";
-            cin >> foodOption;
-            /*
-            if (foodOption == 1) {
-                customerQueue.enqueue(foodList.get(0));
-            }
+            createNewOrder(foodList, customerQueue);
+        }
 
-            if (foodOption == 2) {
-                customerQueue.enqueue(foodList.get(1));
+        else if (option == 5) {
+            cout << "--Cancel Order--" << endl;
+            if (!customerQueue.isEmpty()) {
+                cout << "Order cancelled successfully." << endl;
+                customerQueue.dequeue();
             }
-
-            if (foodOption == 3) {
-                customerQueue.enqueue(foodList.get(2));
-            }
-
-            if (foodOption == 4) {
-                customerQueue.enqueue(foodList.get(3));
-            }
-            */
-            for (int i = 0; i < foodList.getLength(); i++) {
-                if (i == (foodOption - 1)) {
-                    customerQueue.enqueue(foodList.get(i));
-                }
+            else {
+                cout << "No orders to cancel." << endl;
             }
         }
-        else if (option == 5)
+
+        else if (option == 6)
         {
             string newUsername;
             string newPassword;
