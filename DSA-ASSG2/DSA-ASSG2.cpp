@@ -54,6 +54,7 @@ int main()
             int foodOption;
             cout << "Select food choice: ";
             cin >> foodOption;
+            /*
             if (foodOption == 1) {
                 customerQueue.enqueue(foodList.get(0));
             }
@@ -68,6 +69,12 @@ int main()
 
             if (foodOption == 4) {
                 customerQueue.enqueue(foodList.get(3));
+            }
+            */
+            for (int i = 0; i < foodList.getLength(); i++) {
+                if (i == (foodOption - 1)) {
+                    customerQueue.enqueue(foodList.get(i));
+                }
             }
         }
         else if (option == 5)
