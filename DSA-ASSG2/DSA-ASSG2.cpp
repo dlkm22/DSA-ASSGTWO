@@ -13,6 +13,7 @@ List populateFoodList(List foodList) {
     return foodList;
 }
 
+/*
 void createNewOrder(List foodList, Queue& customerQueue) {
     cout << "--Create New Order--" << endl;
     for (int i = 0; i < foodList.getLength(); i++) {
@@ -37,6 +38,7 @@ void createNewOrder(List foodList, Queue& customerQueue) {
         cout << "Thank you for ordering, your order will be ready soon!" << endl;
     }
 }
+*/
 
 int main()
 {
@@ -72,7 +74,18 @@ int main()
         }
         
         else if (option == 4) { //changes
-            createNewOrder(foodList, customerQueue);
+            cout << "--Create New Order--" << endl;
+            for (int i = 0; i < foodList.getLength(); i++) {
+                cout << foodList.get(i) << endl;
+            }
+            int foodOption;
+            cout << "Select food choice: ";
+            cin >> foodOption;
+            for (int i = 0; i < foodList.getLength(); i++) {
+                if (i == (foodOption - 1)) {
+                    customerQueue.enqueue(foodList.get(i));
+                }
+            }
         }
 
         else if (option == 5) {
