@@ -1,8 +1,13 @@
 #include "Dictionary.h"
-#include <string>
-#include<iostream>
+#include "List.h"
 using namespace std;
 
+Dictionary::Dictionary() {
+	size = 0;
+	for (int i = 0; i < MAX_SIZE; i++) {
+		items[i] = nullptr;
+	}
+}
 
 Dictionary::Dictionary() { size = 0, lastNode; }
 
@@ -13,7 +18,7 @@ Dictionary::~Dictionary() {}
 int Dictionary::hash(KeyType key)
 {
 	int keyValue = 0;
-	for (int i = 0; i < key.length(); i++)
+	for (int i = 0; i <= key.length(); i++)
 	{
 		keyValue += charValue(key[i]);
 	}
@@ -23,24 +28,16 @@ int Dictionary::hash(KeyType key)
 
 int Dictionary::charValue(char c)
 {
-	int Value;
 	if (isalpha(c))
 	{
 		if (isupper(c))
-		{
-			Value = (c);
-			return Value;
-		}
+			return (int)c - (int)'A';
 		else
-		{ 
-			Value = (c);
-			return Value;
-		}
+			return (int)c - (int)'a' + 26;
 	}
 	else if (isdigit(c))
 	{
-		Value = c;
-		return Value; 
+		return (int)c; 
 	}
 	else
 		return -1;
@@ -48,13 +45,8 @@ int Dictionary::charValue(char c)
 }
 
 
-bool Dictionary::add(KeyType newKey, ItemType newItem)
-{
-	Node newNode;
-	newNode.key = hash(newKey);
-	newNode.item = newItem;
-	newNode.next = NULL;
-	Node* temp = &newNode;
+bool Dictionary::add(KeyType newKey, ItemType newItem) {
+	int index = hash(newKey);
 
 	if (size == 0)
 	{
@@ -71,31 +63,25 @@ bool Dictionary::add(KeyType newKey, ItemType newItem)
 			{
 				return false;
 			}
-			else if (items[i]->next == NULL && items[i]->key != newKey)
-			{
-				items[i]->next = temp;
-				items[i + 1] = temp;
-				lastNode.next = temp;
-				size++;
-				return true;
+			else {
+				// If the node to remove is in the middle or end of the chain
+				prev->next = current->next;
 			}
 		}
+		prev = current;
+		current = current->next;
 	}
 }
 
-ItemType Dictionary::get(KeyType key) 
-{
-	key = hash(key);
-	for (int i = 0; i < size; i++)
-	{
-		if (items[i]->key == key)
-		{
-			return "Placeholder";
+ItemType Dictionary::get(KeyType key) {
+	int index = hash(key);
+	Node* current = items[index];
+	while (current->next != nullptr) {
+		if (current->key == key) {
+			return current->item;
 		}
 	}
 }
-
-
 
 void Dictionary::remove(KeyType key)
 {
@@ -109,13 +95,15 @@ void Dictionary::remove(KeyType key)
 	}
 }
 
-void Dictionary::print()
-{
-	for (int i = 0; i < size; i++)
-	{
-		cout << items[i]->item;
-		//cout << items[i]->key;
+void Dictionary::print() {
+	for (int i = 0; i < MAX_SIZE; i++) {
+		Node* current = items[i];
+		while (current != nullptr) {
+			cout << current->key << ": " << current->item << endl;
+			current = current->next;
+		}
 	}
+
 }
 
 
