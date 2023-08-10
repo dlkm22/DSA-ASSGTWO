@@ -87,3 +87,12 @@ void Dictionary::remove(KeyType key)
 		}
 	}
 }
+
+void Dictionary::print()
+{
+	for (int i = 0; i < size; i++)
+	{
+		cout << items[i]->item;
+		//cout << items[i]->key;
+	}
+}

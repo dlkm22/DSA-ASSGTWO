@@ -94,6 +94,11 @@ int main()
             break;
         }
 
+        else if (option == 9) {
+            accountDictionary.print();
+
+        }
+
         else {
             cout << "Not a valid option! Please try again" << endl;
             continue;
