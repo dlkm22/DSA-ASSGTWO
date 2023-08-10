@@ -58,8 +58,8 @@ bool Dictionary::add(KeyType newKey, ItemType newItem)
 
 	if (size == 0)
 	{
-		items[0] = newNode;
-		lastNode.next = &newNode;
+		items[0] = temp;
+		lastNode.next = temp;
 		size++;
 		return true;
 	}

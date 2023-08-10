@@ -18,7 +18,7 @@ struct Node
 class Dictionary
 {
 private:
-	Node items[MAX_SIZE];
+	Node* items[MAX_SIZE];
 	int  size;			// number of items in the Dictionary
 	Node lastNode;
 
