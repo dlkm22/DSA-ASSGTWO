@@ -32,7 +32,8 @@ static void createNewOrder(List foodList, Queue& customerQueue) {
     cin >> choice;
     if (choice == "Y" || choice == "y") {
         //createNewOrder(foodList, customerQueue);
-        cout << "ok thanks for support" << endl;
+        //add item to the same queue, how to call?
+
     }
     else {
         cout << "Thank you for ordering, your order will be ready soon!" << endl;
@@ -78,7 +79,7 @@ int main()
         else if (option == 3) {
             cout << "--View customer information for an order--" << endl;
             string order;
-            cout << "Which order would you like to view?";
+            cout << "Which order would you like to view? : ";
             cin >> order;
 
 
