@@ -13,7 +13,7 @@ Dictionary::~Dictionary() {}
 int Dictionary::hash(KeyType key)
 {
 	int keyValue = 0;
-	for (int i = 0; i <= key.length(); i++)
+	for (int i = 0; i < key.length(); i++)
 	{
 		keyValue += charValue(key[i]);
 	}
@@ -23,16 +23,24 @@ int Dictionary::hash(KeyType key)
 
 int Dictionary::charValue(char c)
 {
+	int Value;
 	if (isalpha(c))
 	{
 		if (isupper(c))
-			return (int)c - (int)'A';
+		{
+			Value = (c);
+			return Value;
+		}
 		else
-			return (int)c - (int)'a' + 26;
+		{ 
+			Value = (c);
+			return Value;
+		}
 	}
 	else if (isdigit(c))
 	{
-		return (int)c; 
+		Value = c;
+		return Value; 
 	}
 	else
 		return -1;
@@ -50,8 +58,8 @@ bool Dictionary::add(KeyType newKey, ItemType newItem)
 
 	if (size == 0)
 	{
-		items[0] = temp;
-		lastNode.next = temp;
+		items[0] = newNode;
+		lastNode.next = &newNode;
 		size++;
 		return true;
 	}
@@ -75,6 +83,19 @@ bool Dictionary::add(KeyType newKey, ItemType newItem)
 	}
 }
 
+ItemType Dictionary::get(KeyType key) 
+{
+	key = hash(key);
+	for (int i = 0; i < size; i++)
+	{
+		if (items[i]->key == key)
+		{
+			return "Placeholder";
+		}
+	}
+}
+
+
 
 void Dictionary::remove(KeyType key)
 {
@@ -96,3 +117,5 @@ void Dictionary::print()
 		//cout << items[i]->key;
 	}
 }
+
+

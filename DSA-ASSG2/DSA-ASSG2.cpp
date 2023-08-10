@@ -110,6 +110,7 @@ int main()
             cin >> newPassword; 
 
             accountDictionary.add(newPassword, newUsername); 
+            cout << accountDictionary.get(newPassword);
 
 
 
