@@ -13,8 +13,8 @@ List populateFoodList(List foodList) {
     return foodList;
 }
 
-/*
-void createNewOrder(List foodList, Queue& customerQueue) {
+
+static void createNewOrder(List foodList, Queue& customerQueue) {
     cout << "--Create New Order--" << endl;
     for (int i = 0; i < foodList.getLength(); i++) {
         cout << foodList.get(i) << endl;
@@ -38,7 +38,12 @@ void createNewOrder(List foodList, Queue& customerQueue) {
         cout << "Thank you for ordering, your order will be ready soon!" << endl;
     }
 }
-*/
+
+bool updateStatus() {
+    //parameter should have order to update
+    //statuses - preparing, done
+    return true;
+}
 
 int main()
 {
@@ -62,7 +67,8 @@ int main()
 
         if (option == 1) {
             cout << "--View Incoming Orders--" << endl;
-            customerQueue.displayItems();
+            // if user is admin, allow to view incoming orders
+            orderQueue.displayItems();
         }
 
         else if (option == 2) {
@@ -71,6 +77,11 @@ int main()
 
         else if (option == 3) {
             cout << "--View customer information for an order--" << endl;
+            string order;
+            cout << "Which order would you like to view?";
+            cin >> order;
+
+
         }
         
         else if (option == 4) { //changes
@@ -84,8 +95,12 @@ int main()
             for (int i = 0; i < foodList.getLength(); i++) {
                 if (i == (foodOption - 1)) {
                     customerQueue.enqueue(foodList.get(i));
+                    orderQueue.enqueue(foodList.get(i));
                 }
             }
+            
+            
+            //createNewOrder(foodList, customerQueue);
         }
 
         else if (option == 5) {
