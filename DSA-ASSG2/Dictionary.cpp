@@ -35,7 +35,9 @@ int Dictionary::hash(KeyType key) {
 				hash += (int)c - (int)'a' + 26;
 		}
 		else
-			return -1;
+		{
+			hash += (int)c; 
+		}
 	}
 	index = hash % MAX_SIZE;
 	return index;
