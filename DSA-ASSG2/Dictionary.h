@@ -1,5 +1,4 @@
 // Dictionary.h - - Specification of Dictionary ADT
-#pragma once 
 #include<string>
 #include<iostream>
 using namespace std;
@@ -18,9 +17,9 @@ struct Node
 class Dictionary
 {
 private:
-	Node items[MAX_SIZE];
+	Node* items[MAX_SIZE]; // 101 buckets / items is the hashtable
 	int  size;			// number of items in the Dictionary
-	Node lastNode;
+
 
 public:
 	// constructor
@@ -30,8 +29,6 @@ public:
 	~Dictionary();
 
 	int hash(KeyType key);
-
-	int charValue(char c);
 
 	// add a new item with the specified key to the Dictionary
 	bool add(KeyType newKey, ItemType newItem);
