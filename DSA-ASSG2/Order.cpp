@@ -46,11 +46,13 @@ string Order::updateStatus() {
 
 	return status;
 
+	/* prototype function for when order is completed, it is removed from customer's orderlist.
 	if (status == "Completed") {
 		for (int i = 0; i < newOrder.getLength(); i++) {
 			newOrder.remove(i);
 		}
 	}
+	*/
 }
 
 string Order::getStatus() {
