@@ -14,7 +14,7 @@ List populateFoodList(List foodList) {
     return foodList;
 }
 
-
+/*
 void createNewOrder(List foodList, Order& order) {
     cout << "--Create New Order--" << endl;
     for (int i = 0; i < foodList.getLength(); i++) {
@@ -50,8 +50,8 @@ void createNewOrder(List foodList, Order& order) {
     }
     
     cout << "Thank you for ordering, your order will be ready soon!" << endl;
-
 }
+*/
 
 int main()
 {
@@ -114,9 +114,10 @@ int main()
             }
             */
             
+            order.createNewOrder(foodList, order);
             
             
-            createNewOrder(foodList, order);
+            //createNewOrder(foodList, order);
         }
 
         else if (option == 5) {

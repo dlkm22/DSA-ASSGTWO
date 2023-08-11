@@ -64,3 +64,39 @@ bool Order::isEmpty() {
 		return true;
 }
 
+void Order::createNewOrder(List foodList, Order& order) {
+	for (int i = 0; i < foodList.getLength(); i++) {
+		cout << foodList.get(i) << endl;
+	}
+	int foodOption;
+	cout << "Select food choice: ";
+	cin >> foodOption;
+	for (int i = 0; i < foodList.getLength(); i++) {
+		if (i == (foodOption - 1)) {
+			order.add(foodList.get(i));
+			//orderQueue.enqueue(foodList.get(i));
+		}
+	}
+	string choice;
+	cout << "Order More? [Y/N]: ";
+	cin >> choice;
+	while (choice == "Y" || choice == "y") {
+		cout << "--Add More Items--" << endl;
+		for (int i = 0; i < foodList.getLength(); i++) {
+			cout << foodList.get(i) << endl;
+		}
+		cout << "Select food choice: ";
+		cin >> foodOption;
+		for (int i = 0; i < foodList.getLength(); i++) {
+			if (i == (foodOption - 1)) {
+				order.add(foodList.get(i));
+				//orderQueue.enqueue(foodList.get(i));
+			}
+		}
+		cout << "Order More? [Y/N]: ";
+		cin >> choice;
+	}
+
+	cout << "Thank you for ordering, your order will be ready soon!" << endl;
+}
+
