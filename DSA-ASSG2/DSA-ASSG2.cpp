@@ -15,7 +15,7 @@ List populateFoodList(List foodList) {
 }
 
 
-Queue createNewOrder(List foodList, Order order, Queue orderQueue) {
+void createNewOrder(List foodList, Order& order) {
     cout << "--Create New Order--" << endl;
     for (int i = 0; i < foodList.getLength(); i++) {
         cout << foodList.get(i) << endl;
@@ -26,7 +26,7 @@ Queue createNewOrder(List foodList, Order order, Queue orderQueue) {
     for (int i = 0; i < foodList.getLength(); i++) {
         if (i == (foodOption - 1)) {
             order.add(foodList.get(i));
-            orderQueue.enqueue(foodList.get(i));
+            //orderQueue.enqueue(foodList.get(i));
         }
     }
     string choice;
@@ -42,7 +42,7 @@ Queue createNewOrder(List foodList, Order order, Queue orderQueue) {
         for (int i = 0; i < foodList.getLength(); i++) {
             if (i == (foodOption - 1)) {
                 order.add(foodList.get(i));
-                orderQueue.enqueue(foodList.get(i));
+                //orderQueue.enqueue(foodList.get(i));
             }
         }
         cout << "Order More? [Y/N]: ";
@@ -50,13 +50,7 @@ Queue createNewOrder(List foodList, Order order, Queue orderQueue) {
     }
     
     cout << "Thank you for ordering, your order will be ready soon!" << endl;
-    return order, orderQueue;
-}
 
-bool updateStatus() {
-    //parameter should have order to update
-    //statuses - preparing, done
-    return true;
 }
 
 int main()
@@ -104,7 +98,7 @@ int main()
         }
         
         else if (option == 4) { //changes
-            
+            /*
             cout << "--Create New Order--" << endl;
             for (int i = 0; i < foodList.getLength(); i++) {
                 cout << foodList.get(i) << endl;
@@ -118,10 +112,11 @@ int main()
                     orderQueue.enqueue(foodList.get(i));
                 }
             }
+            */
             
             
             
-            //createNewOrder(foodList, order, orderQueue);
+            createNewOrder(foodList, order);
         }
 
         else if (option == 5) {
