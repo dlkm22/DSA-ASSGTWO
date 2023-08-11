@@ -6,12 +6,14 @@
 class Order
 {
 private:
-
+	List newOrder;
+	string status = "Order Received";
 
 public:
 	Order();
 	bool add(ItemType item);
-	string updateStatus(Order& order);
+	string updateStatus();
+	string getStatus();
 	void displayAllItems();
 };
 

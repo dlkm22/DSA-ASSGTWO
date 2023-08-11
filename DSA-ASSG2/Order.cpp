@@ -6,18 +6,16 @@ using namespace std;
 //how to add items to order? do I need a add method? do I use a queue?
 
 Order::Order() {
-	//List newOrder;
+
 }
 
 bool Order::add(ItemType item) {
-	List newOrder;
 	newOrder.add(item);
 	return true;
 }
 
-string Order::updateStatus(Order& order) {
+string Order::updateStatus() {
 	bool ready;
-	string status = "Order Received";
 
 	string option;
 	cout << "What would you like to update status to? [P/COM/CAN]: ";
@@ -38,11 +36,22 @@ string Order::updateStatus(Order& order) {
 		ready = false;
 	}
 
+	else if (option == "0") {
+		cout << "Cancelled operation." << endl;
+	}
+
+	else {
+		cout << "Not a valid option, please try again. If you want to cancel, enter 0.";
+	}
+
+	return status;
+}
+
+string Order::getStatus() {
 	return status;
 }
 
 void Order::displayAllItems() {
-	List newOrder;
 	newOrder.print();
 }
 

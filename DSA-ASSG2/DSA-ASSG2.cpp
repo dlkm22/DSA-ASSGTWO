@@ -77,6 +77,8 @@ int main()
         else if (option == 2) {
             cout << "--Update status of order--" << endl;
             order.displayAllItems();
+            cout << "Current status: " << order.getStatus() << endl;
+            order.updateStatus();
         }
 
         else if (option == 3) {
