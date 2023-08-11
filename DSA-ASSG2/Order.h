@@ -6,9 +6,6 @@
 class Order
 {
 private:
-	List orderList;
-
-
 
 
 public:

@@ -4,6 +4,11 @@
 using namespace std;
 
 Order::Order() {
+	List newOrder;
+
+}
+
+bool Order::updateStatus(Order& order) {
 
 }
 

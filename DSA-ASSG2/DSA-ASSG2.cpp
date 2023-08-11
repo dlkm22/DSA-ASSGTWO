@@ -14,7 +14,7 @@ List populateFoodList(List foodList) {
 }
 
 
-static void createNewOrder(List foodList, Queue& customerQueue) {
+Queue createNewOrder(List foodList, Queue& customerQueue) {
     cout << "--Create New Order--" << endl;
     for (int i = 0; i < foodList.getLength(); i++) {
         cout << foodList.get(i) << endl;
@@ -33,7 +33,7 @@ static void createNewOrder(List foodList, Queue& customerQueue) {
     if (choice == "Y" || choice == "y") {
         //createNewOrder(foodList, customerQueue);
         //add item to the same queue, how to call?
-
+        return customerQueue;
     }
     else {
         cout << "Thank you for ordering, your order will be ready soon!" << endl;
