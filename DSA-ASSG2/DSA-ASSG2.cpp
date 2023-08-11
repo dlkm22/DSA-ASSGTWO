@@ -142,14 +142,14 @@ int main()
             cout << "Input your password:" << endl;
             cin >> password;
 
-            retrievedUsername = accountDictionary.get(password);
+            retrievedUsername = accountDictionary.get(password, username);
             if (retrievedUsername == username)
             {
                 cout << "Successfully Logged In" << endl;
             }
             else
             {
-                cout << "Wrong password inputed." << endl;
+                cout <<  retrievedUsername  << endl;
             }
         }
 
