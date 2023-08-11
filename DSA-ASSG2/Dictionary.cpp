@@ -104,9 +104,17 @@ void Dictionary::remove(KeyType key) {
 ItemType Dictionary::get(KeyType key) {
 	int index = hash(key);
 	Node* current = items[index];
-	while (current->next != nullptr) {
-		if (current->key == key) {
-			return current->item;
+	if (current->key == key)
+	{
+		return current->item;
+	}
+	else 
+	{
+		while (current->next != nullptr) {
+			if (current->key == key) {
+				return current->item;
+			}
+			current = current->next;
 		}
 	}
 }

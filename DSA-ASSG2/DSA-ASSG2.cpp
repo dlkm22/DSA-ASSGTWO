@@ -62,7 +62,7 @@ int main()
 
 
     while (option != 0) {
-        cout << "---------Menu---------\n[1] View incoming orders\n[2] Update Status of an order\n[3] View Customer information for an order\n[4] Create New Order\n[5] Cancel Order\n[6] Register New Account\n[0] Exit\n----------------------" << endl;
+        cout << "---------Menu---------\n[1] View incoming orders\n[2] Update Status of an order\n[3] View Customer information for an order\n[4] Create New Order\n[5] Cancel Order\n[6] Register New Account\n[7] Log Into Account\n[0] Exit\n----------------------" << endl;
         cout << "Select operation: ";
         cin >> option;
 
@@ -125,13 +125,29 @@ int main()
             cout << "Input New Password:" << endl;
             cin >> newPassword; 
 
-            accountDictionary.add(newPassword, newUsername); 
+            accountDictionary.add(newPassword, newUsername);
+        }
 
+        else if (option == 7)
+        {
+            string username;
+            string password;
+            string retrievedUsername;
 
+            cout << "Input your username:" << endl;
+            cin >> username;
+            cout << "Input your password:" << endl;
+            cin >> password;
 
-
-         
-
+            retrievedUsername = accountDictionary.get(password);
+            if (retrievedUsername == username)
+            {
+                cout << "Successfully Logged In" << endl;
+            }
+            else
+            {
+                cout << "Wrong password inputed." << endl;
+            }
         }
 
         else if (option == 0) {
