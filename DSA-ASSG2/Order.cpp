@@ -41,7 +41,7 @@ string Order::updateStatus() {
 	}
 
 	else {
-		cout << "Not a valid option, please try again. If you want to cancel, enter 0.";
+		cout << "Not a valid option, please try again. If you want to cancel, enter 0." << endl;
 	}
 
 	return status;
