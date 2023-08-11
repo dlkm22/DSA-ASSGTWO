@@ -6,11 +6,12 @@ using namespace std;
 //how to add items to order? do I need a add method? do I use a queue?
 
 Order::Order() {
-
+	sizeOfOrderList = 0;
 }
 
 bool Order::add(ItemType item) {
 	newOrder.add(item);
+	sizeOfOrderList++;
 	return true;
 }
 
@@ -53,5 +54,13 @@ string Order::getStatus() {
 
 void Order::displayAllItems() {
 	newOrder.print();
+}
+
+bool Order::isEmpty() {
+	if (sizeOfOrderList > 0) {
+		return false;
+	}
+	else
+		return true;
 }
 

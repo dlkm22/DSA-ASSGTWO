@@ -15,7 +15,7 @@ List populateFoodList(List foodList) {
 }
 
 
-Queue createNewOrder(List foodList, Queue& customerQueue) {
+Queue createNewOrder(List foodList, Order order, Queue orderQueue) {
     cout << "--Create New Order--" << endl;
     for (int i = 0; i < foodList.getLength(); i++) {
         cout << foodList.get(i) << endl;
@@ -25,20 +25,32 @@ Queue createNewOrder(List foodList, Queue& customerQueue) {
     cin >> foodOption;
     for (int i = 0; i < foodList.getLength(); i++) {
         if (i == (foodOption - 1)) {
-            customerQueue.enqueue(foodList.get(i));
+            order.add(foodList.get(i));
+            orderQueue.enqueue(foodList.get(i));
         }
     }
     string choice;
     cout << "Order More? [Y/N]: ";
     cin >> choice;
-    if (choice == "Y" || choice == "y") {
-        //createNewOrder(foodList, customerQueue);
-        //add item to the same queue, how to call?
-        return customerQueue;
+    while (choice == "Y" || choice == "y") {
+        cout << "--Add More Items--" << endl;
+        for (int i = 0; i < foodList.getLength(); i++) {
+            cout << foodList.get(i) << endl;
+        }
+        cout << "Select food choice: ";
+        cin >> foodOption;
+        for (int i = 0; i < foodList.getLength(); i++) {
+            if (i == (foodOption - 1)) {
+                order.add(foodList.get(i));
+                orderQueue.enqueue(foodList.get(i));
+            }
+        }
+        cout << "Order More? [Y/N]: ";
+        cin >> choice;
     }
-    else {
-        cout << "Thank you for ordering, your order will be ready soon!" << endl;
-    }
+    
+    cout << "Thank you for ordering, your order will be ready soon!" << endl;
+    return order, orderQueue;
 }
 
 bool updateStatus() {
@@ -53,6 +65,7 @@ int main()
     Queue orderQueue; //for admin
     Queue customerQueue; //for customer
     Dictionary accountDictionary;
+    List orderList;
     Order order;
 
     List foodList;
@@ -91,6 +104,7 @@ int main()
         }
         
         else if (option == 4) { //changes
+            /*
             cout << "--Create New Order--" << endl;
             for (int i = 0; i < foodList.getLength(); i++) {
                 cout << foodList.get(i) << endl;
@@ -104,9 +118,10 @@ int main()
                     orderQueue.enqueue(foodList.get(i));
                 }
             }
+            */
             
             
-            //createNewOrder(foodList, customerQueue);
+            createNewOrder(foodList, order, orderQueue);
         }
 
         else if (option == 5) {

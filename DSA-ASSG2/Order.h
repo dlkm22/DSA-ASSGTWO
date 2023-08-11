@@ -8,6 +8,7 @@ class Order
 private:
 	List newOrder;
 	string status = "Order Received";
+	int sizeOfOrderList;
 
 public:
 	Order();
@@ -15,5 +16,6 @@ public:
 	string updateStatus();
 	string getStatus();
 	void displayAllItems();
+	bool isEmpty();
 };
 
