@@ -10,6 +10,8 @@ private:
 
 public:
 	Order();
-	bool updateStatus(Order& order);
+	bool add(ItemType item);
+	string updateStatus(Order& order);
+	void displayAllItems();
 };
 

@@ -2,6 +2,7 @@
 #include "Queue.h"
 #include "List.h"
 #include "Dictionary.h"
+#include "Order.h"
 
 using namespace std;
 
@@ -52,6 +53,7 @@ int main()
     Queue orderQueue; //for admin
     Queue customerQueue; //for customer
     Dictionary accountDictionary;
+    Order order;
 
     List foodList;
     foodList.add("[1] WcChicken");
@@ -74,6 +76,7 @@ int main()
 
         else if (option == 2) {
             cout << "--Update status of order--" << endl;
+            order.displayAllItems();
         }
 
         else if (option == 3) {
@@ -95,7 +98,7 @@ int main()
             cin >> foodOption;
             for (int i = 0; i < foodList.getLength(); i++) {
                 if (i == (foodOption - 1)) {
-                    customerQueue.enqueue(foodList.get(i));
+                    order.add(foodList.get(i));
                     orderQueue.enqueue(foodList.get(i));
                 }
             }
