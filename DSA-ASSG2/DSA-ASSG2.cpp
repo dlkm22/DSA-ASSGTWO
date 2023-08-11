@@ -104,7 +104,7 @@ int main()
         }
         
         else if (option == 4) { //changes
-            /*
+            
             cout << "--Create New Order--" << endl;
             for (int i = 0; i < foodList.getLength(); i++) {
                 cout << foodList.get(i) << endl;
@@ -118,10 +118,10 @@ int main()
                     orderQueue.enqueue(foodList.get(i));
                 }
             }
-            */
             
             
-            createNewOrder(foodList, order, orderQueue);
+            
+            //createNewOrder(foodList, order, orderQueue);
         }
 
         else if (option == 5) {
