@@ -1,9 +1,8 @@
 #include "Order.h"
 #include "List.h"
 #include <iostream>
+#include<string>
 using namespace std;
-
-//how to add items to order? do I need a add method? do I use a queue?
 
 Order::Order() {
 	sizeOfOrderList = 0;
@@ -19,7 +18,7 @@ string Order::updateStatus() {
 	bool ready;
 
 	string option;
-	cout << "What would you like to update status to? [P/COM/CAN]: ";
+	cout << "What would you like to update status to? [P/COM/CAN] (0 to exit): ";
 	cin >> option;
 
 	if (option == "P" || option == "p") {
@@ -46,10 +45,30 @@ string Order::updateStatus() {
 	}
 
 	return status;
+
+	if (status == "Completed") {
+		for (int i = 0; i < newOrder.getLength(); i++) {
+			newOrder.remove(i);
+		}
+	}
 }
 
 string Order::getStatus() {
 	return status;
+}
+
+bool Order::cancelOrder() {
+	if (status != "Preparing") {
+		for (int i = 0; i < newOrder.getLength(); i++) {
+			newOrder.remove(i);
+		}
+		cout << "Order cancelled successfully" << endl;
+		return true;
+	}
+	else {
+		cout << "Unable to cancel order as it is currently being/has been prepared." << endl;
+		return false;
+	}
 }
 
 void Order::displayAllItems() {
@@ -64,7 +83,8 @@ bool Order::isEmpty() {
 		return true;
 }
 
-void Order::createNewOrder(List foodList, Order& order) {
+
+void Order::createNewOrder(List& foodList, Order& order) {
 	for (int i = 0; i < foodList.getLength(); i++) {
 		cout << foodList.get(i) << endl;
 	}
@@ -73,10 +93,13 @@ void Order::createNewOrder(List foodList, Order& order) {
 	cin >> foodOption;
 	for (int i = 0; i < foodList.getLength(); i++) {
 		if (i == (foodOption - 1)) {
-			order.add(foodList.get(i));
+			string food;
+			food = foodList.get(i);
+			order.add(food);
 			//orderQueue.enqueue(foodList.get(i));
 		}
 	}
+	
 	string choice;
 	cout << "Order More? [Y/N]: ";
 	cin >> choice;
@@ -96,7 +119,10 @@ void Order::createNewOrder(List foodList, Order& order) {
 		cout << "Order More? [Y/N]: ";
 		cin >> choice;
 	}
+	
 
 	cout << "Thank you for ordering, your order will be ready soon!" << endl;
 }
+
+
 

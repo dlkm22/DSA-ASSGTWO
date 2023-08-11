@@ -23,6 +23,9 @@ public:
 	//get status of order
 	string getStatus();
 
+	//cancel order if status != preparing
+	bool cancelOrder();
+
 	//display all items in order
 	void displayAllItems();
 
@@ -30,6 +33,6 @@ public:
 	bool isEmpty();
 
 	//create new order 
-	void createNewOrder(List foodList, Order& order);
+	void createNewOrder(List& foodList, Order& order);
 };
 

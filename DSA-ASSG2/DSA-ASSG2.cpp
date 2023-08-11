@@ -3,6 +3,7 @@
 #include "List.h"
 #include "Dictionary.h"
 #include "Order.h"
+#include "Customer.h"
 
 using namespace std;
 
@@ -14,45 +15,6 @@ List populateFoodList(List foodList) {
     return foodList;
 }
 
-/*
-void createNewOrder(List foodList, Order& order) {
-    cout << "--Create New Order--" << endl;
-    for (int i = 0; i < foodList.getLength(); i++) {
-        cout << foodList.get(i) << endl;
-    }
-    int foodOption;
-    cout << "Select food choice: ";
-    cin >> foodOption;
-    for (int i = 0; i < foodList.getLength(); i++) {
-        if (i == (foodOption - 1)) {
-            order.add(foodList.get(i));
-            //orderQueue.enqueue(foodList.get(i));
-        }
-    }
-    string choice;
-    cout << "Order More? [Y/N]: ";
-    cin >> choice;
-    while (choice == "Y" || choice == "y") {
-        cout << "--Add More Items--" << endl;
-        for (int i = 0; i < foodList.getLength(); i++) {
-            cout << foodList.get(i) << endl;
-        }
-        cout << "Select food choice: ";
-        cin >> foodOption;
-        for (int i = 0; i < foodList.getLength(); i++) {
-            if (i == (foodOption - 1)) {
-                order.add(foodList.get(i));
-                //orderQueue.enqueue(foodList.get(i));
-            }
-        }
-        cout << "Order More? [Y/N]: ";
-        cin >> choice;
-    }
-    
-    cout << "Thank you for ordering, your order will be ready soon!" << endl;
-}
-*/
-
 int main()
 {
     int option = 1;
@@ -61,6 +23,7 @@ int main()
     Dictionary accountDictionary;
     List orderList;
     Order order;
+    Customer customer;
 
     List foodList;
     foodList.add("[1] WcChicken");
@@ -97,38 +60,12 @@ int main()
 
         }
         
-        else if (option == 4) { //changes
-            /*
-            cout << "--Create New Order--" << endl;
-            for (int i = 0; i < foodList.getLength(); i++) {
-                cout << foodList.get(i) << endl;
-            }
-            int foodOption;
-            cout << "Select food choice: ";
-            cin >> foodOption;
-            for (int i = 0; i < foodList.getLength(); i++) {
-                if (i == (foodOption - 1)) {
-                    order.add(foodList.get(i));
-                    orderQueue.enqueue(foodList.get(i));
-                }
-            }
-            */
-            
+        else if (option == 4) { //havent implemented adding it to orderqueue for admin to see
             order.createNewOrder(foodList, order);
-            
-            
-            //createNewOrder(foodList, order);
         }
 
         else if (option == 5) {
-            cout << "--Cancel Order--" << endl;
-            if (!customerQueue.isEmpty()) {
-                cout << "Order cancelled successfully." << endl;
-                customerQueue.dequeue();
-            }
-            else {
-                cout << "No orders to cancel." << endl;
-            }
+            order.cancelOrder();
         }
 
         else if (option == 6)

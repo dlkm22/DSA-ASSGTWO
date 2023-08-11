@@ -6,12 +6,11 @@ List::List() {
 }
 
 List::~List() {
-	//remove all items from the heap space
+	// Remove all items from the heap space
 	Node* temp;
 	while (firstNode != NULL) {
 		temp = firstNode;
 		firstNode = firstNode->next;
-		temp->next = NULL;
 		delete temp;
 	}
 }
@@ -30,11 +29,11 @@ bool List::add(ItemType item) {
 			temp = temp->next; //traverse through the list
 		}
 		temp->next = newNode;
-
 	}
 	size++;
 	return true;
 }
+
 
 
 bool List::add(int index, ItemType item) {
