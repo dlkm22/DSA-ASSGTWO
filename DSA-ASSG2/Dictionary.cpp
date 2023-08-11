@@ -46,26 +46,50 @@ int Dictionary::hash(KeyType key) {
 
 bool Dictionary::add(KeyType newKey, ItemType newItem) {
 	int index = hash(newKey);
+	Node* newNode = new Node;
 
 	if (items[index] == nullptr) {
-		Node* newNode = new Node;
 		newNode->key = newKey;
 		newNode->item = newItem;
 		newNode->next = nullptr;
+		newNode->linkedNext = nullptr;
 
 		items[index] = newNode;
 	}
-	else {
+	else
+	{
 		Node* current = items[index]; //set current pointer to point to first node at index
-		if (current->key == newKey) {
-			return false; //key exists
+		if (current->key == newKey && current->linkedNext == nullptr) 
+		{
+			newNode->key = newKey;
+			newNode->item = newItem;
+			newNode->next = nullptr;
+			newNode->linkedNext = nullptr;
+			current->linkedNext = newNode;
+			return true;
 		}
-		while (current != nullptr) {
-			current = current->next;
-			if (current->key == newKey) {
-				return false; //key exists
+
+
+		else if (current->key == newKey)
+		{
+			while (current->linkedNext != nullptr)
+			{
+				current = current->linkedNext;
 			}
-			Node* newNode = new Node;
+			newNode->key = newKey;
+			newNode->item = newItem;
+			newNode->next = nullptr;
+			newNode->linkedNext = nullptr;
+			current->linkedNext = newNode;
+			return true;
+
+		}
+		else 
+		{
+			while (current != nullptr) 
+			{
+				current = current->next;
+			}
 			newNode->key = newKey;
 			newNode->item = newItem;
 			newNode->next = nullptr;
@@ -101,22 +125,38 @@ void Dictionary::remove(KeyType key) {
 	}
 }
 
-ItemType Dictionary::get(KeyType key) {
+ItemType Dictionary::get(KeyType key, ItemType wantedItem) {
 	int index = hash(key);
-	Node* current = items[index];
-	if (current->key == key)
+	Node* current = items[0];
+	if (current != nullptr)
 	{
-		return current->item;
-	}
-	else 
-	{
-		while (current->next != nullptr) {
-			if (current->key == key) {
-				return current->item;
+		if (current->key == key)
+		{
+			return current->item;
+		}
+		else
+		{
+			while (current->next != nullptr) {
+				if (current->key == key) {
+					if (current->item == wantedItem)
+					{
+						return current->item;
+					}
+					while (current->linkedNext != nullptr)
+					{
+						if (current->item == wantedItem)
+						{
+							return current->item;
+						}
+						current = current->linkedNext;
+					}
+				
+				}
+				current = current->next;
 			}
-			current = current->next;
 		}
 	}
+	return "Account or Key not Found";
 }
 
 bool Dictionary::isEmpty() {

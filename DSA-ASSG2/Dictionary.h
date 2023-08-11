@@ -12,6 +12,7 @@ struct Node
 	KeyType  key;   // search key
 	ItemType item;	// data item
 	Node* next;	// pointer pointing to next item
+	Node* linkedNext; // pointer pointing to the next item of the same key
 };
 
 class Dictionary
@@ -37,7 +38,7 @@ public:
 	void remove(KeyType key);
 
 	// get an item with the specified key in the Dictionary (retrieve)
-	ItemType get(KeyType key);
+	ItemType get(KeyType key, ItemType wantedItem);
 
 	// check if the Dictionary is empty
 	bool isEmpty();
