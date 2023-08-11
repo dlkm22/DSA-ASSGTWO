@@ -154,26 +154,6 @@ ItemType Dictionary::get(KeyType key, ItemType wantedItem) {
 		current = current->next;
 	}
 		return "Account or Key not Found";
-
-			/*
-			while (current->next != nullptr) {
-				if (current->key == key) {
-					if (current->item == wantedItem)
-					{
-						return current->item;
-					}
-					while (current->linkedNext != nullptr)
-					{
-						if (current->item == wantedItem)
-						{
-							return current->item;
-						}
-						current = current->linkedNext;
-					}
-				
-				}
-				current = current->next;
-			}*/
 }
 
 
