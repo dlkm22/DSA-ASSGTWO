@@ -48,52 +48,55 @@ bool Dictionary::add(KeyType newKey, ItemType newItem) {
 	int index = hash(newKey);
 	Node* newNode = new Node;
 
-	if (items[index] == nullptr) {
+	if (items[0] == nullptr) {
 		newNode->key = newKey;
 		newNode->item = newItem;
 		newNode->next = nullptr;
 		newNode->linkedNext = nullptr;
 
-		items[index] = newNode;
+		items[0] = newNode;
 	}
 	else
 	{
-		Node* current = items[index]; //set current pointer to point to first node at index
-		if (current->key == newKey && current->linkedNext == nullptr) 
+		Node* current = items[0]; //set current pointer to point to first node at index
+		while (current != nullptr)
 		{
-			newNode->key = newKey;
-			newNode->item = newItem;
-			newNode->next = nullptr;
-			newNode->linkedNext = nullptr;
-			current->linkedNext = newNode;
-			return true;
-		}
-
-
-		else if (current->key == newKey)
-		{
-			while (current->linkedNext != nullptr)
+			if (current->key == newKey && current->linkedNext == nullptr)
 			{
-				current = current->linkedNext;
+				newNode->key = newKey;
+				newNode->item = newItem;
+				newNode->next = nullptr;
+				newNode->linkedNext = nullptr;
+				current->linkedNext = newNode;
+				return true;
 			}
-			newNode->key = newKey;
-			newNode->item = newItem;
-			newNode->next = nullptr;
-			newNode->linkedNext = nullptr;
-			current->linkedNext = newNode;
-			return true;
 
-		}
-		else 
-		{
-			while (current != nullptr) 
+
+			else if (current->key == newKey)
 			{
-				current = current->next;
+				while (current->linkedNext != nullptr)
+				{
+					current = current->linkedNext;
+				}
+				newNode->key = newKey;
+				newNode->item = newItem;
+				newNode->next = nullptr;
+				newNode->linkedNext = nullptr;
+				current->linkedNext = newNode;
+				return true;
+
 			}
-			newNode->key = newKey;
-			newNode->item = newItem;
-			newNode->next = nullptr;
-			current->next = newNode;
+
+			else if(current->next == nullptr)
+			{
+				newNode->key = newKey;
+				newNode->item = newItem;
+				newNode->next = nullptr;
+				newNode->linkedNext = nullptr;
+				current->next = newNode;
+				return true;
+			}
+			current = current->next;
 		}
 	}
 	size++;
@@ -128,14 +131,31 @@ void Dictionary::remove(KeyType key) {
 ItemType Dictionary::get(KeyType key, ItemType wantedItem) {
 	int index = hash(key);
 	Node* current = items[0];
-	if (current != nullptr)
-	{
+	while (current != nullptr)
+    {
 		if (current->key == key)
 		{
-			return current->item;
+			if (current->item != wantedItem && current->linkedNext != nullptr)
+			{
+				while (current != nullptr)
+				{
+					if (current->item == wantedItem)
+					{
+						return current->item;
+					}
+					current = current->linkedNext;
+				}
+			}
+			else
+			{
+				return current->item;
+			}
 		}
-		else
-		{
+		current = current->next;
+	}
+		return "Account or Key not Found";
+
+			/*
 			while (current->next != nullptr) {
 				if (current->key == key) {
 					if (current->item == wantedItem)
@@ -153,11 +173,10 @@ ItemType Dictionary::get(KeyType key, ItemType wantedItem) {
 				
 				}
 				current = current->next;
-			}
-		}
-	}
-	return "Account or Key not Found";
+			}*/
 }
+
+
 
 bool Dictionary::isEmpty() {
 	if (size == 0) {
