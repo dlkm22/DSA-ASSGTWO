@@ -78,6 +78,8 @@ int main()
             cout << "Input New Password:" << endl;
             cin >> newPassword; 
 
+            cout << "Input account type (Staff/Customer" << endl; 
+
             accountDictionary.add(newPassword, newUsername);
         }
 
@@ -91,6 +93,8 @@ int main()
             cin >> username;
             cout << "Input your password:" << endl;
             cin >> password;
+
+         
 
             retrievedUsername = accountDictionary.get(password, username);
             if (retrievedUsername == username)
