@@ -41,10 +41,6 @@ int main()
             order.displayAllItems();
             cout << "Current status: " << order.getStatus() << endl;
             order.updateStatus();
-
-            if (order.updateStatus() == "Complete") {
-                orderQueue.dequeue();
-            }
         }
 
         else if (option == 3) {
