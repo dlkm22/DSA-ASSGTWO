@@ -6,12 +6,13 @@ class Customer
 {
 private:
 	string name;
-	Order order;
+	//Order order;
 
 public:
 	Customer();
 	Customer(string n);
 	void setName(string n);
+	string getName();
 	//bool addOrder(Order& order);
 };
 

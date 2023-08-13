@@ -1,5 +1,7 @@
 #include "Order.h"
 #include "List.h"
+#include "Customer.h"
+#include "Queue.h"
 #include <iostream>
 #include<string>
 using namespace std;
@@ -13,6 +15,18 @@ bool Order::add(ItemType item) {
 	sizeOfOrderList++;
 	return true;
 }
+
+/*
+void Order::addCustomerInfo(Customer c) {
+	Customer customer;
+	customer.setName(c.getName());
+}
+
+
+string Order::getCustomerInfo(Order& order) {
+	//return "test";
+}
+*/
 
 string Order::updateStatus() {
 	bool ready;
@@ -86,7 +100,7 @@ bool Order::isEmpty() {
 }
 
 
-void Order::createNewOrder(List& foodList, Order& order) {
+void Order::createNewOrder(List& foodList, Order& order, Queue& orderQueue) {
 	for (int i = 0; i < foodList.getLength(); i++) {
 		cout << foodList.get(i) << endl;
 	}
@@ -98,7 +112,7 @@ void Order::createNewOrder(List& foodList, Order& order) {
 			string food;
 			food = foodList.get(i);
 			order.add(food);
-			//orderQueue.enqueue(foodList.get(i));
+			orderQueue.enqueue(foodList.get(i));
 		}
 	}
 	

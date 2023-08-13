@@ -14,6 +14,10 @@ void Customer::setName(string n) {
 	name = n;
 }
 
+string Customer::getName() {
+	return name;
+}
+
 /*
 bool Customer::addOrder(Order& order) {
 

@@ -7,14 +7,6 @@
 
 using namespace std;
 
-List populateFoodList(List foodList) {
-    foodList.add("WcChicken");
-    foodList.add("WcSpicy");
-    foodList.add("BigWac");
-    foodList.add("Woke Zero");
-    return foodList;
-}
-
 int main()
 {
     int option = 1;
@@ -53,15 +45,12 @@ int main()
 
         else if (option == 3) {
             cout << "--View customer information for an order--" << endl;
-            string order;
-            cout << "Which order would you like to view? : ";
-            cin >> order;
-
-
+            orderQueue.displayItems();
+           
         }
         
         else if (option == 4) { //havent implemented adding it to orderqueue for admin to see
-            order.createNewOrder(foodList, order);
+            order.createNewOrder(foodList, order, orderQueue);
         }
 
         else if (option == 5) {
