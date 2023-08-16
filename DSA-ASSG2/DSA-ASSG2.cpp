@@ -75,6 +75,10 @@ int LoginMenu()
 
             accountDictionary.add(newPassword, newUsername);
         }
+        else if (option == 0)
+        {
+            cout << "Thank you for choosing WcDonalds" << endl; 
+        }
         else
         {
             cout << "Invalid Input!" << endl;
@@ -122,7 +126,7 @@ int customerMenu(List foodList)
             cout << "Invalid Input!" << endl;
         }
     }
-    return -2; // logout  
+    return 0; // logout  
 }
 
 int staffMenu()
@@ -195,7 +199,7 @@ int main()
         {
             menu = staffMenu();
         }
-        else
+        else if (menu == -1)
         {
             menu = customerMenu(foodList);
         }
