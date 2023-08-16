@@ -120,7 +120,7 @@ int customerMenu(List foodList)
             cout << "Invalid Input!" << endl;
         }
     }
-    return -2; // logout  
+    return 0; // logout  
 }
 
 int staffMenu()
@@ -193,7 +193,7 @@ int main()
         {
             menu = staffMenu();
         }
-        else
+        else if (menu == -1)
         {
             menu = customerMenu(foodList);
         }
