@@ -1,6 +1,8 @@
 #pragma once
 #include "Order.h"
 #include "List.h"
+#include <string>
+#include <iostream>
 
 class Customer
 {

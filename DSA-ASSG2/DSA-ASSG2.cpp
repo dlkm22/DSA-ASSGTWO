@@ -10,6 +10,7 @@ Dictionary accountDictionary;
 List staffList;
 List orderList;
 Queue orderQueue;
+Customer customer;
 
 int LoginMenu()
 {
@@ -44,6 +45,7 @@ int LoginMenu()
                     if (retrievedUsername == staffList.get(i))
                         return 1; // Returns 1 if staff account
                 }
+                customer.setName(retrievedUsername);
                 return -1;  //Returns -1 if customer account
             }
             else
@@ -143,7 +145,7 @@ int staffMenu()
         else if (option == 3)
         {
             cout << "--View customer information for an order--" << endl;
-            orderQueue.displayItems(); // This is probably wrong
+            customer.getName();
         }
 
     }

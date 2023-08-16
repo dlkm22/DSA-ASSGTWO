@@ -11,8 +11,6 @@ private:
 	List newOrder;
 	string status = "Order Received";
 	int sizeOfOrderList;
-	string n;
-	Customer customer;
 
 public:
 	//constructor

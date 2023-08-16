@@ -18,10 +18,5 @@ string Customer::getName() {
 	return name;
 }
 
-/*
-bool Customer::addOrder(Order& order) {
-
-}
-*/
 
 
