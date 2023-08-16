@@ -13,6 +13,15 @@ private:
 	int sizeOfOrderList;
 	int totalOverall;
 
+	int noOfitem1;
+	int noOfitem2;
+	int noOfitem3;
+	int noOfitem4;
+
+	int avgWaitTime;
+	int totalWaitTime;
+	int totalOrders;
+
 public:
 	//constructor
 	Order();
@@ -39,5 +48,9 @@ public:
 	int createNewOrder(List& foodList, List& priceList, Order& order, Queue& orderQueue, bool freeWcChicken, bool freeWokeZero);
 
 	int earnings();
+
+	string getPopular();
+
+	int getAvgWaitTime();
 };
 

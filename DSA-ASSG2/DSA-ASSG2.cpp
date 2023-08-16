@@ -12,6 +12,8 @@ List orderList;
 Queue orderQueue;
 Customer customer;
 int totalEarnings = 0;
+int avgWT = 0;
+
 
 int LoginMenu()
 {
@@ -128,6 +130,7 @@ int customerMenu(List foodList, List priceList)
             }
 
             totalEarnings += order.earnings();
+            avgWT += order.getAvgWaitTime();
 
         }
         
@@ -219,6 +222,10 @@ int staffMenu()
 
         else if (option == 4) {
             cout << "Total earnings: $" << totalEarnings << endl;
+
+            cout << "Most popular food item: " << order.getPopular() << endl;
+
+            cout << "Average waiting time: " << avgWT << endl;
         }
 
         else if (option == 0)
@@ -258,9 +265,6 @@ int main()
     priceList.add("6");
     priceList.add("1");
 
-
-
-    //foodList = populateFoodList(foodList);
     
   
     while (menu != 0)
