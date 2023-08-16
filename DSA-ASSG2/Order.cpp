@@ -106,7 +106,7 @@ int Order::createNewOrder(List& foodList, List& priceList,Order& order, Queue& o
 				{
 					freeWcChicken = false;
 				}
-				else
+				if (i == 3)
 				{
 					freeWokeZero = false;
 				}
@@ -137,7 +137,7 @@ int Order::createNewOrder(List& foodList, List& priceList,Order& order, Queue& o
 					{
 						freeWcChicken = false;
 					}
-					else
+					else if (i == 3)
 					{
 						freeWokeZero = false;
 					}
