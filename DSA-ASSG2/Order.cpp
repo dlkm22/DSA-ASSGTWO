@@ -70,7 +70,7 @@ string Order::getStatus() {
 }
 
 bool Order::cancelOrder(Queue& orderQueue) {
-	if (status != "Preparing") {
+	if (status != "Preparing" || status != "Completed" || status != "Cancelled") {
 		for (int i = 0; i < orderQueue.getLength(); i++) {
 			orderQueue.dequeue();
 		}
