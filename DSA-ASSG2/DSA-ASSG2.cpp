@@ -113,8 +113,8 @@ int customerMenu(List foodList, List priceList)
 
         else if (option == 2)
         {
-            int RedemptionWcChicken;
-            int RedemptionWoke;
+            int RedemptionWcChicken = 0;;
+            int RedemptionWoke = 0;
             //Loyalty Pts are 1 to 1 
             loyaltyPts, RedemptionWcChicken, RedemptionWoke = order.createNewOrder(foodList, priceList, order, orderQueue, customer.freeWcChicken, customer.freeWokeZero);
             customer.addLoyaltyPts(loyaltyPts);
@@ -126,6 +126,8 @@ int customerMenu(List foodList, List priceList)
             {
                 customer.freeWokeZero = 0;
             }
+
+            totalEarnings += order.earnings();
 
         }
         
