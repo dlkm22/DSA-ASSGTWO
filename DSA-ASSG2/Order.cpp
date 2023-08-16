@@ -123,7 +123,6 @@ int Order::createNewOrder(List& foodList, List& priceList, Order& order, Queue& 
 				totalPrice += stoi(price);
 				order.add(food);
 				orderQueue.enqueue(foodList.get(i));
-				//totalOverall += totalPrice;
 			}
 		}
 
