@@ -16,7 +16,7 @@ private:
 
     Node* frontNode;	// point to the first item
     Node* backNode;	// point to the first item
-
+    int size = 0;
 
 public:
     // constructor
@@ -37,6 +37,9 @@ public:
 
     // check if the queue is empty
     bool isEmpty();
+
+    //get length of queue
+    int getLength();
 
     // display items in queue from front to back
     void displayItems();

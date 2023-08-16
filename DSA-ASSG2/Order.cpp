@@ -16,18 +16,6 @@ bool Order::add(ItemType item) {
 	return true;
 }
 
-/*
-void Order::addCustomerInfo(Customer c) {
-	Customer customer;
-	customer.setName(c.getName());
-}
-
-
-string Order::getCustomerInfo(Order& order) {
-	//return "test";
-}
-*/
-
 string Order::updateStatus() {
 	bool ready;
 
@@ -58,25 +46,23 @@ string Order::updateStatus() {
 		cout << "Not a valid option, please try again. If you want to cancel, enter 0." << endl;
 	}
 
-	return status;
-
-	/* prototype function for when order is completed, it is removed from customer's orderlist.
-	if (status == "Completed") {
+	if (status == "Completed") { //added
 		for (int i = 0; i < newOrder.getLength(); i++) {
 			newOrder.remove(i);
 		}
 	}
-	*/
+
+	return status;
 }
 
 string Order::getStatus() {
 	return status;
 }
 
-bool Order::cancelOrder() {
+bool Order::cancelOrder(Queue& orderQueue) {
 	if (status != "Preparing") {
-		for (int i = 0; i < newOrder.getLength(); i++) {
-			newOrder.remove(i);
+		for (int i = 0; i < orderQueue.getLength(); i++) {
+			orderQueue.dequeue();
 		}
 		cout << "Order cancelled successfully" << endl;
 		return true;
@@ -129,7 +115,7 @@ void Order::createNewOrder(List& foodList, Order& order, Queue& orderQueue) {
 		for (int i = 0; i < foodList.getLength(); i++) {
 			if (i == (foodOption - 1)) {
 				order.add(foodList.get(i));
-				//orderQueue.enqueue(foodList.get(i));
+				orderQueue.enqueue(foodList.get(i));
 			}
 		}
 		cout << "Order More? [Y/N]: ";

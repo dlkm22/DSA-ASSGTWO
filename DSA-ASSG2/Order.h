@@ -19,10 +19,6 @@ public:
 	//add item to order list
 	bool add(ItemType item);
 
-	//void addCustomerInfo(Customer c);
-
-	//string getCustomerInfo(Order& order);
-
 	//update status of order
 	string updateStatus();
 
@@ -30,7 +26,7 @@ public:
 	string getStatus();
 
 	//cancel order if status != preparing
-	bool cancelOrder();
+	bool cancelOrder(Queue& orderQueue);
 
 	//display all items in order
 	void displayAllItems();

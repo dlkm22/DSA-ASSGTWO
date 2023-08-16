@@ -32,6 +32,7 @@ bool Queue::enqueue(ItemType item) {
 		backNode = newNode;
 	}
 
+	size++;
 	return true;
 }
 
@@ -50,6 +51,7 @@ bool Queue::dequeue() {
 		frontNode = frontNode->next;
 		delete temp;
 	}
+	size--;
 	return true;
 }
 
@@ -71,6 +73,7 @@ bool Queue::dequeue(ItemType& item) {
 		item = temp->item;
 		delete temp;
 	}
+	size--;
 	return true;
 }
 
@@ -89,6 +92,10 @@ bool Queue::isEmpty() {
 	}
 	else
 		return false;
+}
+
+int Queue::getLength() {
+	return size;
 }
 
 void Queue::displayItems() {

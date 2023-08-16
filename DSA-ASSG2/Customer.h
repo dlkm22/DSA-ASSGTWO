@@ -15,6 +15,5 @@ public:
 	Customer(string n);
 	void setName(string n);
 	string getName();
-	//bool addOrder(Order& order);
 };
 

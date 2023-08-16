@@ -97,7 +97,9 @@ int customerMenu(List foodList)
         cin >> option;
         if (option == 1)
         {
+            cout << "----Food List----" << endl;
             foodList.print(); 
+            cout << "------------" << endl;
         }
 
         else if (option == 2)
@@ -107,7 +109,7 @@ int customerMenu(List foodList)
         
         else if (option == 3)
         {
-            order.cancelOrder(); 
+            order.cancelOrder(orderQueue);
         }
 
         else if (option == 0)
