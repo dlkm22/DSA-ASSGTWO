@@ -123,8 +123,7 @@ int customerMenu(List foodList, List priceList)
             {
                 customer.freeWokeZero = 0;
             }
-            
-            
+
         }
         
         else if (option == 3)
