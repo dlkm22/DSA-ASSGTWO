@@ -153,7 +153,7 @@ int Order::createNewOrder(List& foodList, List& priceList,Order& order, Queue& o
 	
 	cout << "Total cost of this meal is " << totalPrice << " dollars" << endl; 
 	cout << "Thank you for ordering, your order will be ready soon!" << endl;
-	return totalPrice;
+	return totalPrice, (int)freeWcChicken, (int)freeWokeZero;
 }
 
 
