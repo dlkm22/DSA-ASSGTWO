@@ -19,7 +19,7 @@ int LoginMenu()
 
     while (option != 0)
     {
-        cout << "[1] Login \n[2] Register New Account" << endl;
+        cout << "---------Menu---------\n[1] Login \n[2] Register New Account[0] Exit\n----------------------" << endl;
         cin >> option;
 
         if (option == 1)
@@ -82,14 +82,14 @@ int LoginMenu()
 }
 
 
-void customerMenu(List foodList)
+int customerMenu(List foodList)
 {
     int option = -1;
     Order order;
 
     while (option != 0)
     {
-        cout << "[1] Browse Food List \n[2] Create New Order\n[3] Cancel Order" << endl;
+        cout << "---------Menu---------\n[1] Browse Food List \n[2] Create New Order\n[3] Cancel Order\n[0] Exit\n----------------------" << endl;
         cin >> option;
         if (option == 1)
         {
@@ -105,7 +105,47 @@ void customerMenu(List foodList)
         {
             order.cancelOrder(); 
         }
+
+        else 
+        {
+            cout << "Invalid Input!" << endl;
+        }
     }
+    return -2; // logout  
+}
+
+void staffMenu()
+{
+    int option = -1;
+    Order order;
+    while (option != 0)
+    {
+        cout << "---------Menu---------\n[1] View Upcoming Orders \n[2] Update Status of Order\n[3] View Customer Information\n[0] Exit\n----------------------" << endl;
+        cin >> option;
+
+        if (option == 1)
+        {
+            cout << "--View Incoming Orders--" << endl;
+            // if user is admin, allow to view incoming orders
+            orderQueue.displayItems();
+        }
+
+        else if (option == 2)
+        {
+            cout << "--Update status of order--" << endl;
+            order.displayAllItems();
+            cout << "Current status: " << order.getStatus() << endl;
+            order.updateStatus();
+        }
+        
+        else if (option == 3)
+        {
+            cout << "--View customer information for an order--" << endl;
+            orderQueue.displayItems(); // This is probably wrong
+        }
+
+    }
+
 }
 
 int main()
