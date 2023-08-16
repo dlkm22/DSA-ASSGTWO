@@ -86,7 +86,7 @@ bool Order::isEmpty() {
 }
 
 
-int Order::createNewOrder(List& foodList, List& priceList,Order& order, Queue& orderQueue) {
+int Order::createNewOrder(List& foodList, List& priceList,Order& order, Queue& orderQueue, bool freeWcChicken, bool freeWokeZero) {
 	for (int i = 0; i < foodList.getLength(); i++) {
 		cout << foodList.get(i) << endl;
 	}
@@ -99,6 +99,18 @@ int Order::createNewOrder(List& foodList, List& priceList,Order& order, Queue& o
 			string food;
 			food = foodList.get(i);
 			string price = priceList.get(i);
+			if ((i == 0 and freeWcChicken == true) || (i == 3 and freeWokeZero == true))
+			{
+				totalPrice -= stoi(price);
+				if (i == 1)
+				{
+					freeWcChicken = false;
+				}
+				else
+				{
+					freeWokeZero = false;
+				}
+			}
 			totalPrice += stoi(price);
 			order.add(food);
 			orderQueue.enqueue(foodList.get(i));
@@ -118,6 +130,18 @@ int Order::createNewOrder(List& foodList, List& priceList,Order& order, Queue& o
 		for (int i = 0; i < foodList.getLength(); i++) {
 			if (i == (foodOption - 1)) {
 				string price = priceList.get(i);
+				if ((i == 0 and freeWcChicken == true) || (i == 3 and freeWokeZero == true))
+				{
+					totalPrice -= stoi(price);
+					if (i == 1)
+					{
+						freeWcChicken = false;
+					}
+					else
+					{
+						freeWokeZero = false;
+					}
+				}
 				totalPrice += stoi(price);
 				order.add(foodList.get(i));
 				orderQueue.enqueue(foodList.get(i));
