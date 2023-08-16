@@ -8,6 +8,7 @@ class Customer
 {
 private:
 	string name;
+	int loyaltyPoints; 
 	//Order order;
 
 public:

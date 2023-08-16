@@ -86,17 +86,20 @@ bool Order::isEmpty() {
 }
 
 
-void Order::createNewOrder(List& foodList, Order& order, Queue& orderQueue) {
+int Order::createNewOrder(List& foodList, List& priceList,Order& order, Queue& orderQueue) {
 	for (int i = 0; i < foodList.getLength(); i++) {
 		cout << foodList.get(i) << endl;
 	}
 	int foodOption;
+	int totalPrice = 0;
 	cout << "Select food choice: ";
 	cin >> foodOption;
 	for (int i = 0; i < foodList.getLength(); i++) {
 		if (i == (foodOption - 1)) {
 			string food;
 			food = foodList.get(i);
+			string price = priceList.get(i);
+			totalPrice += stoi(price);
 			order.add(food);
 			orderQueue.enqueue(foodList.get(i));
 		}
@@ -114,6 +117,8 @@ void Order::createNewOrder(List& foodList, Order& order, Queue& orderQueue) {
 		cin >> foodOption;
 		for (int i = 0; i < foodList.getLength(); i++) {
 			if (i == (foodOption - 1)) {
+				string price = priceList.get(i);
+				totalPrice += stoi(price);
 				order.add(foodList.get(i));
 				orderQueue.enqueue(foodList.get(i));
 			}
@@ -122,8 +127,9 @@ void Order::createNewOrder(List& foodList, Order& order, Queue& orderQueue) {
 		cin >> choice;
 	}
 	
-
+	cout << "Total cost of this meal is " << totalPrice << " dollars" << endl; 
 	cout << "Thank you for ordering, your order will be ready soon!" << endl;
+	return totalPrice;
 }
 
 

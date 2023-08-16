@@ -90,7 +90,7 @@ int LoginMenu()
 }
 
 
-int customerMenu(List foodList)
+int customerMenu(List foodList, List priceList)
 {
     int option = -1;
     Order order;
@@ -108,7 +108,7 @@ int customerMenu(List foodList)
 
         else if (option == 2)
         {
-            order.createNewOrder(foodList, order, orderQueue);
+            order.createNewOrder(foodList, priceList, order, orderQueue);
         }
         
         else if (option == 3)
@@ -189,6 +189,15 @@ int main()
     foodList.add("[2] WcSpicy");
     foodList.add("[3] BigWac");
     foodList.add("[4] Woke Zero");
+
+    List priceList;
+    priceList.add("2");
+    priceList.add("4");
+    priceList.add("6");
+    priceList.add("1");
+
+
+
     //foodList = populateFoodList(foodList);
     
   
@@ -201,7 +210,7 @@ int main()
         }
         else if (menu == -1)
         {
-            menu = customerMenu(foodList);
+            menu = customerMenu(foodList, priceList);
         }
     }
 }
