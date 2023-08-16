@@ -11,6 +11,7 @@ List staffList;
 List orderList;
 Queue orderQueue;
 Customer customer;
+int totalEarnings = 0;
 
 int LoginMenu()
 {
@@ -113,8 +114,8 @@ int customerMenu(List foodList, List priceList)
         {
             loyaltyPts = order.createNewOrder(foodList, priceList, order, orderQueue);
             customer.addLoyaltyPts(loyaltyPts);
-            
-            
+            //cout << "Total cost: " << order.earnings();
+            totalEarnings += order.earnings();
         }
         
         else if (option == 3)
@@ -146,7 +147,7 @@ int staffMenu()
     Order order;
     while (option != 0)
     {
-        cout << "------Staff Menu------\n[1] View Upcoming Orders \n[2] Update Status of Order\n[3] View Customer Information\n[0] Logout\n----------------------" << endl;
+        cout << "------Staff Menu------\n[1] View Upcoming Orders \n[2] Update Status of Order\n[3] View Customer Information\n[4] View Reports\n[0] Logout\n----------------------" << endl;
         cin >> option;
 
         if (option == 1)
@@ -168,6 +169,10 @@ int staffMenu()
         {
             cout << "--View customer information for an order--" << endl;
             cout << "Customer Name: " << customer.getName() << endl;
+        }
+
+        else if (option == 4) {
+            cout << "Total earnings: $" << totalEarnings << endl;
         }
 
         else if (option == 0)
@@ -196,10 +201,10 @@ int main()
     int menu = -1;
 
     List foodList;
-    foodList.add("[1] WcChicken");
-    foodList.add("[2] WcSpicy");
-    foodList.add("[3] BigWac");
-    foodList.add("[4] Woke Zero");
+    foodList.add("[1] WcChicken - $2");
+    foodList.add("[2] WcSpicy - $4");
+    foodList.add("[3] BigWac - $6");
+    foodList.add("[4] Woke Zero - $1");
 
     List priceList;
     priceList.add("2");

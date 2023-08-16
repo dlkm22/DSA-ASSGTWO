@@ -11,6 +11,7 @@ private:
 	List newOrder;
 	string status = "Order Received";
 	int sizeOfOrderList;
+	int totalOverall;
 
 public:
 	//constructor
@@ -36,5 +37,7 @@ public:
 
 	//create new order 
 	int createNewOrder(List& foodList, List& priceList, Order& order, Queue& orderQueue);
+
+	int earnings();
 };
 
