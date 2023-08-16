@@ -8,15 +8,19 @@ class Customer
 {
 private:
 	string name;
-	int loyaltyPoints; 
+	//int loyaltyPoints; 
 	//Order order;
 
 public:
+	int loyaltyPoints;
+	bool freeWcChicken; 
+	bool freeWokeZero;
 	Customer();
 	Customer(string n);
 	void setName(string n);
 	string getName();
 	void getLoyaltyPts();
 	void addLoyaltyPts(int addedPts);
+	void removeLoyaltyPts(int removePts);
 };
 

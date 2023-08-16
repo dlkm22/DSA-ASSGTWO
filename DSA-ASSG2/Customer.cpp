@@ -30,3 +30,10 @@ void Customer::addLoyaltyPts(int addedPts)
 	loyaltyPoints += addedPts;
 }
 
+void Customer::removeLoyaltyPts(int removePts)
+{
+	if (loyaltyPoints >= removePts)
+	{
+		loyaltyPoints -= removePts;
+	}
+}

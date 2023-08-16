@@ -36,8 +36,6 @@ public:
 	bool isEmpty();
 
 	//create new order 
-	int createNewOrder(List& foodList, List& priceList, Order& order, Queue& orderQueue);
-
-	int earnings();
+	int createNewOrder(List& foodList, List& priceList, Order& order, Queue& orderQueue, bool freeWcChicken, bool freeWokeZero);
 };
 

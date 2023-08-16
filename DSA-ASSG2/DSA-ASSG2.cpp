@@ -96,6 +96,7 @@ int LoginMenu()
 int customerMenu(List foodList, List priceList)
 {
     int option = -1;
+    int ptsOption = -1;
     int loyaltyPts = 0;
     Order order;
 
@@ -112,10 +113,20 @@ int customerMenu(List foodList, List priceList)
 
         else if (option == 2)
         {
-            loyaltyPts = order.createNewOrder(foodList, priceList, order, orderQueue);
+            int RedemptionWcChicken;
+            int RedemptionWoke;
+            //Loyalty Pts are 1 to 1 
+            loyaltyPts, RedemptionWcChicken, RedemptionWoke = order.createNewOrder(foodList, priceList, order, orderQueue, customer.freeWcChicken, customer.freeWokeZero);
             customer.addLoyaltyPts(loyaltyPts);
-            //cout << "Total cost: " << order.earnings();
-            totalEarnings += order.earnings();
+            if (RedemptionWcChicken == 0)
+            {
+                customer.freeWcChicken = 0;
+            }
+            if (RedemptionWoke == 0)
+            {
+                customer.freeWokeZero = 0;
+            }
+
         }
         
         else if (option == 3)
@@ -125,6 +136,39 @@ int customerMenu(List foodList, List priceList)
 
         else if (option == 4)
         {
+            while (ptsOption != 0)
+            {
+                cout << "---Loyalty Point Redemption---" << endl;
+                cout << "[1] Free WcChicken\n[2] Free Woke Zero\n[0] Exit Redemption Menu\nAll Rewards Cost 12 pts To Redeem\n You Have " << customer.loyaltyPoints << " loyalty points" << endl;
+        
+                cin >> ptsOption;
+                if (ptsOption == 1 && (customer.loyaltyPoints >= 12))
+                {
+                    customer.removeLoyaltyPts(12);
+                    cout << "Free WcChicken redeemed" << endl;
+                    customer.freeWcChicken = true;
+                }
+
+                else if (ptsOption == 2 && (customer.loyaltyPoints >= 12))
+                {
+                    customer.removeLoyaltyPts(12);
+                    cout << "Free Woke Zero redeemed" << endl;
+                    customer.freeWokeZero = true;
+                }
+
+                else if (ptsOption == 0)
+                {
+                    break;
+                }
+                
+                else 
+                {
+                    cout << "Invalid Input" << endl;
+                }
+
+
+            }
+          
 
         }
 
