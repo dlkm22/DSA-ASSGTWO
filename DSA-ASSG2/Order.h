@@ -2,7 +2,7 @@
 #include<string>
 #include<iostream>
 #include "List.h"
-#include "Customer2.h"
+#include "Customer.h"
 #include "Queue.h"
 //create new order object which includes ordered food and status
 class Order
@@ -12,7 +12,7 @@ private:
 	string status = "Order Received";
 	int sizeOfOrderList;
 	string n;
-	Customer2 customer;
+	Customer customer;
 
 public:
 	//constructor

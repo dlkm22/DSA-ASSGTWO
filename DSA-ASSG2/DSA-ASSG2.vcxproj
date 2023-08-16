@@ -128,7 +128,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Customer.cpp" />
-    <ClCompile Include="Customer2.cpp" />
     <ClCompile Include="Dictionary.cpp" />
     <ClCompile Include="DSA-ASSG2.cpp" />
     <ClCompile Include="List.cpp" />
@@ -137,7 +136,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Customer.h" />
-    <ClInclude Include="Customer2.h" />
     <ClInclude Include="Dictionary.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="Order.h" />
