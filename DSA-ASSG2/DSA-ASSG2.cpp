@@ -157,7 +157,6 @@ int staffMenu()
         {
             cout << "Logout Successful" << endl;
         }
-        //still get error from this
         
         else
         {
