@@ -1,6 +1,6 @@
 #include "Order.h"
 #include "List.h"
-#include "Customer.h"
+#include "Customer2.h"
 #include "Queue.h"
 #include <iostream>
 #include<string>
