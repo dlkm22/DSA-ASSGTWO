@@ -5,6 +5,7 @@ List::List() {
 	size = 0;
 }
 
+/*
 List::~List() {
 	// Remove all items from the heap space
 	Node* temp;
@@ -14,6 +15,7 @@ List::~List() {
 		delete temp;
 	}
 }
+*/
 
 bool List::add(ItemType item) {
 	Node* newNode = new Node;

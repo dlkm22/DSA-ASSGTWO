@@ -22,7 +22,7 @@ public:
 	List();
 
 	// destructor
-	~List();
+	//~List();
 
 	// add an item to the back of the list (append)
 	bool add(ItemType item);

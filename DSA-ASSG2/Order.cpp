@@ -114,7 +114,9 @@ void Order::createNewOrder(List& foodList, Order& order, Queue& orderQueue) {
 		cin >> foodOption;
 		for (int i = 0; i < foodList.getLength(); i++) {
 			if (i == (foodOption - 1)) {
-				order.add(foodList.get(i));
+				string food;
+				food = foodList.get(i);
+				order.add(food);
 				orderQueue.enqueue(foodList.get(i));
 			}
 		}

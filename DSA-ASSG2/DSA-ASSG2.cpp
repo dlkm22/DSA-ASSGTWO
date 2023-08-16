@@ -21,6 +21,7 @@ int LoginMenu()
     while (option != 0)
     {
         cout << "-----Login Menu-------\n[1] Login \n[2] Register New Account\n[0] Exit Program\n----------------------" << endl;
+        cout << "Enter option: ";
         cin >> option;
 
         if (option == 1)
@@ -29,9 +30,9 @@ int LoginMenu()
             string password;
             string retrievedUsername;
 
-            cout << "Input your username:" << endl;
+            cout << "Input your username: ";
             cin >> username;
-            cout << "Input your password:" << endl;
+            cout << "Input your password: ";
             cin >> password;
 
 
@@ -59,12 +60,12 @@ int LoginMenu()
             string newPassword;
             string accountType;
 
-            cout << "Input New Username:" << endl;
+            cout << "Input New Username: ";
             cin >> newUsername;
-            cout << "Input New Password:" << endl;
+            cout << "Input New Password: ";
             cin >> newPassword;
 
-            cout << "Input account type (Staff/Customer)" << endl;
+            cout << "Input account type (Staff/Customer): ";
             cin >> accountType;
 
             if (accountType == "Staff") //If the account is for a staff adds it to the stafflist
@@ -74,6 +75,7 @@ int LoginMenu()
 
 
             accountDictionary.add(newPassword, newUsername);
+            cout << "Registration Successful!" << endl;
         }
         else if (option == 0)
         {
@@ -103,7 +105,7 @@ int customerMenu(List foodList)
         {
             cout << "----Food List----" << endl;
             foodList.print(); 
-            cout << "------------" << endl;
+            cout << "-----------------" << endl;
         }
 
         else if (option == 2)
@@ -126,7 +128,7 @@ int customerMenu(List foodList)
             cout << "Invalid Input!" << endl;
         }
     }
-    return 0; // logout  
+    return -2; // logout  
 }
 
 int staffMenu()
@@ -198,10 +200,12 @@ int main()
         if (menu == 1)
         {
             menu = staffMenu();
+            cout << "Enter option: ";
         }
         else if (menu == -1)
         {
             menu = customerMenu(foodList);
+            cout << "Enter option: ";
         }
     }
 }
