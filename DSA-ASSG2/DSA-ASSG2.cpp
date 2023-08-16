@@ -150,13 +150,14 @@ int staffMenu()
         else if (option == 3)
         {
             cout << "--View customer information for an order--" << endl;
-            customer.getName();
+            cout << "Customer Name: " << customer.getName() << endl;
         }
 
         else if (option == 0)
         {
             cout << "Logout Successful" << endl;
         }
+        //still get error from this
         
         else
         {
