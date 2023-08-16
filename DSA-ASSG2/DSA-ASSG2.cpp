@@ -8,7 +8,8 @@
 using namespace std;
 Dictionary accountDictionary;
 List staffList;
-
+List orderList;
+Queue orderQueue;
 
 int LoginMenu()
 {
@@ -74,20 +75,36 @@ int LoginMenu()
         }
         else
         {
-            cout << "Invalid Input!";
+            cout << "Invalid Input!" << endl;
         }
 
     }
 }
 
 
-void customerMenu()
+void customerMenu(List foodList)
 {
     int option = -1;
+    Order order;
 
     while (option != 0)
     {
+        cout << "[1] Browse Food List \n[2] Create New Order\n[3] Cancel Order" << endl;
+        cin >> option;
+        if (option == 1)
+        {
+            foodList.print(); 
+        }
 
+        else if (option == 2)
+        {
+            order.createNewOrder(foodList, order, orderQueue);
+        }
+        
+        else if (option == 3)
+        {
+            order.cancelOrder(); 
+        }
     }
 }
 
@@ -95,8 +112,7 @@ int main()
 {
     int option = 1;
     Queue orderQueue; //for admin
-    Queue customerQueue; //for customer
-    List orderList;
+    Queue customerQueue; //for customer 
     Order order;
     Customer customer;
 
