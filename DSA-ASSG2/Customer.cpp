@@ -18,5 +18,15 @@ string Customer::getName() {
 	return name;
 }
 
+void Customer::getLoyaltyPts()
+{
+	cout << "Your current loyalty point total is: " << loyaltyPoints << endl;
+}
 
+
+
+void Customer::addLoyaltyPts(int addedPts)
+{
+	loyaltyPoints += addedPts;
+}
 

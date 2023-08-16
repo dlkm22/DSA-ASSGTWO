@@ -8,6 +8,7 @@ class Customer
 {
 private:
 	string name;
+	int loyaltyPoints; 
 	//Order order;
 
 public:
@@ -15,5 +16,7 @@ public:
 	Customer(string n);
 	void setName(string n);
 	string getName();
+	void getLoyaltyPts();
+	void addLoyaltyPts(int addedPts);
 };
 

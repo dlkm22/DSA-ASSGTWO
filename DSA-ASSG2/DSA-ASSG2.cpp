@@ -92,14 +92,15 @@ int LoginMenu()
 }
 
 
-int customerMenu(List foodList)
+int customerMenu(List foodList, List priceList)
 {
     int option = -1;
+    int loyaltyPts = 0;
     Order order;
 
     while (option != 0)
     {
-        cout << "---Customer Menu---\n[1] Browse Food List \n[2] Create New Order\n[3] Cancel Order\n[0] Exit\n----------------------" << endl;
+        cout << "---Customer Menu---\n[1] Browse Food List \n[2] Create New Order\n[3] Cancel Order\n[4] Redeem Loyalty Points\n[0] Exit\n----------------------" << endl;
         cin >> option;
         if (option == 1)
         {
@@ -110,12 +111,20 @@ int customerMenu(List foodList)
 
         else if (option == 2)
         {
-            order.createNewOrder(foodList, order, orderQueue);
+            loyaltyPts = order.createNewOrder(foodList, priceList, order, orderQueue);
+            customer.addLoyaltyPts(loyaltyPts);
+            
+            
         }
         
         else if (option == 3)
         {
             order.cancelOrder(orderQueue);
+        }
+
+        else if (option == 4)
+        {
+
         }
 
         else if (option == 0)
@@ -191,6 +200,15 @@ int main()
     foodList.add("[2] WcSpicy");
     foodList.add("[3] BigWac");
     foodList.add("[4] Woke Zero");
+
+    List priceList;
+    priceList.add("2");
+    priceList.add("4");
+    priceList.add("6");
+    priceList.add("1");
+
+
+
     //foodList = populateFoodList(foodList);
     
   
@@ -204,8 +222,7 @@ int main()
         }
         else if (menu == -1)
         {
-            menu = customerMenu(foodList);
-            cout << "Enter option: ";
+            menu = customerMenu(foodList, priceList);
         }
     }
 }
