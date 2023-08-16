@@ -75,6 +75,10 @@ int LoginMenu()
 
             accountDictionary.add(newPassword, newUsername);
         }
+        else if (option == 0)
+        {
+            cout << "Thank you for choosing WcDonalds" << endl; 
+        }
         else
         {
             cout << "Invalid Input!" << endl;
