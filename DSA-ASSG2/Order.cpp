@@ -91,7 +91,7 @@ int Order::earnings() {
 	return totalOverall;
 }
 
-int Order::createNewOrder(List& foodList, List& priceList,Order& order, Queue& orderQueue) {
+int Order::createNewOrder(List& foodList, List& priceList, Order& order, Queue& orderQueue, bool freeWcChicken, bool freeWokeZero) {
 	for (int i = 0; i < foodList.getLength(); i++) {
 		cout << foodList.get(i) << endl;
 	}
@@ -99,41 +99,14 @@ int Order::createNewOrder(List& foodList, List& priceList,Order& order, Queue& o
 	int totalPrice = 0;
 	cout << "Select food choice: ";
 	cin >> foodOption;
-	for (int i = 0; i < foodList.getLength(); i++) {
-		if (i == (foodOption - 1)) {
-			string food;
-			food = foodList.get(i);
-			string price = priceList.get(i);
-			if ((i == 0 and freeWcChicken == true) || (i == 3 and freeWokeZero == true))
-			{
-				totalPrice -= stoi(price);
-				if (i == 1)
-				{
-					freeWcChicken = false;
-				}
-				if (i == 3)
-				{
-					freeWokeZero = false;
-				}
-			}
-			totalPrice += stoi(price);
-			order.add(food);
-			orderQueue.enqueue(foodList.get(i));
-		}
+	if (foodOption > 4 || foodOption < 1) {
+		cout << "Invalid option!" << endl;
 	}
-	
-	string choice;
-	cout << "Order More? [Y/N]: ";
-	cin >> choice;
-	while (choice == "Y" || choice == "y") {
-		cout << "--Add More Items--" << endl;
-		for (int i = 0; i < foodList.getLength(); i++) {
-			cout << foodList.get(i) << endl;
-		}
-		cout << "Select food choice: ";
-		cin >> foodOption;
+	else {
 		for (int i = 0; i < foodList.getLength(); i++) {
 			if (i == (foodOption - 1)) {
+				string food;
+				food = foodList.get(i);
 				string price = priceList.get(i);
 				if ((i == 0 and freeWcChicken == true) || (i == 3 and freeWokeZero == true))
 				{
@@ -142,23 +115,56 @@ int Order::createNewOrder(List& foodList, List& priceList,Order& order, Queue& o
 					{
 						freeWcChicken = false;
 					}
-					else if (i == 3)
+					if (i == 3)
 					{
 						freeWokeZero = false;
 					}
 				}
 				totalPrice += stoi(price);
-				order.add(foodList.get(i));
+				order.add(food);
 				orderQueue.enqueue(foodList.get(i));
 			}
 		}
+
+		string choice;
 		cout << "Order More? [Y/N]: ";
 		cin >> choice;
+		while (choice == "Y" || choice == "y") {
+			cout << "--Add More Items--" << endl;
+			for (int i = 0; i < foodList.getLength(); i++) {
+				cout << foodList.get(i) << endl;
+			}
+			cout << "Select food choice: ";
+			cin >> foodOption;
+			for (int i = 0; i < foodList.getLength(); i++) {
+				if (i == (foodOption - 1)) {
+					string price = priceList.get(i);
+					if ((i == 0 and freeWcChicken == true) || (i == 3 and freeWokeZero == true))
+					{
+						totalPrice -= stoi(price);
+						if (i == 1)
+						{
+							freeWcChicken = false;
+						}
+						else if (i == 3)
+						{
+							freeWokeZero = false;
+						}
+					}
+					totalPrice += stoi(price);
+					order.add(foodList.get(i));
+					orderQueue.enqueue(foodList.get(i));
+					totalOverall += totalPrice;
+				}
+			}
+			cout << "Order More? [Y/N]: ";
+			cin >> choice;
+		}
+
+		cout << "Total cost of this meal is " << totalPrice << " dollars" << endl;
+		cout << "Thank you for ordering, your order will be ready soon!" << endl;
+		return totalPrice, (int)freeWcChicken, (int)freeWokeZero, totalOverall;
 	}
-	
-	cout << "Total cost of this meal is " << totalPrice << " dollars" << endl; 
-	cout << "Thank you for ordering, your order will be ready soon!" << endl;
-	return totalPrice, (int)freeWcChicken, (int)freeWokeZero;
 }
 
 
