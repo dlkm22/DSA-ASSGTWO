@@ -6,13 +6,14 @@
 #include "Customer.h"
 
 using namespace std;
+Dictionary accountDictionary;
+List staffList;
 
 int main()
 {
     int option = 1;
     Queue orderQueue; //for admin
     Queue customerQueue; //for customer
-    Dictionary accountDictionary;
     List orderList;
     Order order;
     Customer customer;
@@ -61,13 +62,21 @@ int main()
         {
             string newUsername;
             string newPassword;
+            string accountType;
 
             cout << "Input New Username:" << endl;
             cin >> newUsername;
             cout << "Input New Password:" << endl;
             cin >> newPassword; 
 
-            cout << "Input account type (Staff/Customer" << endl; 
+            cout << "Input account type (Staff/Customer)" << endl;
+            cin >> accountType; 
+
+            if (accountType == "Staff")
+            {
+                staffList.add(newUsername);
+            }
+
 
             accountDictionary.add(newPassword, newUsername);
         }
@@ -115,3 +124,67 @@ int main()
     }
 }
 
+void LoginMenu()
+{
+    int option = -1;
+
+
+
+    while (option != 0)
+    {
+        cout << "[1] Login \n[2] Register New Account" << endl;
+        cin >> option; 
+
+        if (option == 1)
+        {
+            string username;
+            string password;
+            string retrievedUsername;
+
+            cout << "Input your username:" << endl;
+            cin >> username;
+            cout << "Input your password:" << endl;
+            cin >> password;
+
+
+
+            retrievedUsername = accountDictionary.get(password, username);
+            if (retrievedUsername == username)
+            {
+                cout << "Successfully Logged In" << endl;
+            }
+            else
+            {
+                cout << retrievedUsername << endl;
+            }
+        }
+        else if (option == 2)
+        {
+            string newUsername;
+            string newPassword;
+            string accountType;
+
+            cout << "Input New Username:" << endl;
+            cin >> newUsername;
+            cout << "Input New Password:" << endl;
+            cin >> newPassword;
+
+            cout << "Input account type (Staff/Customer)" << endl;
+            cin >> accountType;
+
+            if (accountType == "Staff")
+            {
+                staffList.add(newUsername);
+            }
+
+
+            accountDictionary.add(newPassword, newUsername);
+        }
+
+    }
+}
+
+void customerMenu()
+{
+
+}
