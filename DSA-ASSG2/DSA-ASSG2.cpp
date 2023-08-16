@@ -93,6 +93,7 @@ int LoginMenu()
 int customerMenu(List foodList, List priceList)
 {
     int option = -1;
+    int loyaltyPts = 0;
     Order order;
 
     while (option != 0)
@@ -108,7 +109,9 @@ int customerMenu(List foodList, List priceList)
 
         else if (option == 2)
         {
-            order.createNewOrder(foodList, priceList, order, orderQueue);
+            loyaltyPts = order.createNewOrder(foodList, priceList, order, orderQueue);
+            
+            
         }
         
         else if (option == 3)
@@ -126,7 +129,7 @@ int customerMenu(List foodList, List priceList)
             cout << "Invalid Input!" << endl;
         }
     }
-    return 0; // logout  
+    return -2; // logout  
 }
 
 int staffMenu()

@@ -16,5 +16,7 @@ public:
 	Customer(string n);
 	void setName(string n);
 	string getName();
+	void getLoyaltyPts();
+	void addLoyaltyPts(int addedPts);
 };
 
