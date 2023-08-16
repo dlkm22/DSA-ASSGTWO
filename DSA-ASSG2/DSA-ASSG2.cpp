@@ -98,7 +98,7 @@ int customerMenu(List foodList, List priceList)
 
     while (option != 0)
     {
-        cout << "---Customer Menu---\n[1] Browse Food List \n[2] Create New Order\n[3] Cancel Order\n[0] Exit\n----------------------" << endl;
+        cout << "---Customer Menu---\n[1] Browse Food List \n[2] Create New Order\n[3] Cancel Order\n[4] Redeem Loyalty Points\n[0] Exit\n----------------------" << endl;
         cin >> option;
         if (option == 1)
         {
@@ -110,6 +110,7 @@ int customerMenu(List foodList, List priceList)
         else if (option == 2)
         {
             loyaltyPts = order.createNewOrder(foodList, priceList, order, orderQueue);
+            customer.addLoyaltyPts(loyaltyPts);
             
             
         }
@@ -117,6 +118,11 @@ int customerMenu(List foodList, List priceList)
         else if (option == 3)
         {
             order.cancelOrder(orderQueue);
+        }
+
+        else if (option == 4)
+        {
+
         }
 
         else if (option == 0)
