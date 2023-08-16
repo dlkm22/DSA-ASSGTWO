@@ -108,6 +108,11 @@ int customerMenu(List foodList)
             order.cancelOrder(); 
         }
 
+        else if (option == 0)
+        {
+            cout << "Logout Successful" << endl;
+        }
+
         else 
         {
             cout << "Invalid Input!" << endl;
@@ -122,7 +127,7 @@ int staffMenu()
     Order order;
     while (option != 0)
     {
-        cout << "------Staff Menu------\n[1] View Upcoming Orders \n[2] Update Status of Order\n[3] View Customer Information\n[0] Exit\n----------------------" << endl;
+        cout << "------Staff Menu------\n[1] View Upcoming Orders \n[2] Update Status of Order\n[3] View Customer Information\n[0] Logout\n----------------------" << endl;
         cin >> option;
 
         if (option == 1)
@@ -144,6 +149,16 @@ int staffMenu()
         {
             cout << "--View customer information for an order--" << endl;
             orderQueue.displayItems(); // This is probably wrong
+        }
+
+        else if (option == 0)
+        {
+            cout << "Logout Successful" << endl;
+        }
+        
+        else
+        {
+            cout << "Invalid Input" << endl; 
         }
 
     }
