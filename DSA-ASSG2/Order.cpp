@@ -159,6 +159,11 @@ List Order::createNewOrder(List& foodList, List& priceList, Order& order, Queue&
 		string choice;
 		cout << "Order More? [Y/N]: ";
 		cin >> choice;
+		while (choice != "Y" and choice != "N")
+		{
+			cout << "Invalid Input! Order More? [Y/N]: ";
+			cin >> choice;
+		}
 		while (choice == "Y" || choice == "y") {
 			cout << "--Add More Items--" << endl;
 			for (int i = 0; i < foodList.getLength(); i++) {
@@ -206,6 +211,11 @@ List Order::createNewOrder(List& foodList, List& priceList, Order& order, Queue&
 			}
 			cout << "Order More? [Y/N]: ";
 			cin >> choice;
+			while (choice != "Y" and choice != "N")
+			{
+				cout << "Invalid Input! Order More? [Y/N]: ";
+				cin >> choice;
+			}
 		}
 
 		avgWaitTime += (totalWaitTime / totalOrders);
