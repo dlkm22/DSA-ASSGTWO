@@ -36,7 +36,7 @@ public:
 	string getStatus();
 
 	//cancel order if status != preparing
-	bool cancelOrder(Queue& orderQueue);
+	bool cancelOrder(Queue& orderQueue, string orderStatus);
 
 	//display all items in order
 	void displayAllItems();

@@ -13,6 +13,7 @@ Queue orderQueue;
 Customer customer;
 int totalEarnings = 0;
 int avgWT = 0;
+string orderStatus = "Order Received";
 
 
 int LoginMenu()
@@ -136,7 +137,7 @@ int customerMenu(List foodList, List priceList)
         
         else if (option == 3)
         {
-            order.cancelOrder(orderQueue);
+            order.cancelOrder(orderQueue, orderStatus);
         }
 
         else if (option == 4)
@@ -212,6 +213,7 @@ int staffMenu()
             order.displayAllItems();
             cout << "Current status: " << order.getStatus() << endl;
             order.updateStatus();
+            orderStatus = order.getStatus();
         }
         
         else if (option == 3)

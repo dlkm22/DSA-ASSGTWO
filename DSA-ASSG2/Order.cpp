@@ -69,9 +69,9 @@ string Order::getStatus() {
 	return status;
 }
 
-bool Order::cancelOrder(Queue& orderQueue) {
-	if (status != "Preparing" || status != "Completed" || status != "Cancelled") {
-		for (int i = 0; i < orderQueue.getLength(); i++) {
+bool Order::cancelOrder(Queue& orderQueue, string orderStatus) {
+	if (orderStatus == "Order Received") {
+		while (!orderQueue.isEmpty()) {
 			orderQueue.dequeue();
 		}
 		cout << "Order cancelled successfully" << endl;
