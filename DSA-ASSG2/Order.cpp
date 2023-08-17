@@ -100,12 +100,15 @@ int Order::earnings() {
 	return totalOverall;
 }
 
-int Order::createNewOrder(List& foodList, List& priceList, Order& order, Queue& orderQueue, bool freeWcChicken, bool freeWokeZero) {
+List Order::createNewOrder(List& foodList, List& priceList, Order& order, Queue& orderQueue, bool freeWcChicken, bool freeWokeZero) {
+	List returnList;
 	for (int i = 0; i < foodList.getLength(); i++) {
 		cout << foodList.get(i) << endl;
 	}
 	int foodOption;
 	int totalPrice = 0;
+	int redeemedChicken = 0;
+	int redeemedSoda = 0;
 	cout << "Select food choice: ";
 	cin >> foodOption;
 	if (foodOption > 4 || foodOption < 1) {
@@ -182,7 +185,6 @@ int Order::createNewOrder(List& foodList, List& priceList, Order& order, Queue& 
 					order.add(foodList.get(i));
 					orderQueue.enqueue(foodList.get(i));
 					totalOrders++;
-					totalOverall += totalPrice;
 
 					if (foodOption == 1) {
 						totalWaitTime += 3;
@@ -207,11 +209,28 @@ int Order::createNewOrder(List& foodList, List& priceList, Order& order, Queue& 
 		}
 
 		avgWaitTime += (totalWaitTime / totalOrders);
+		totalOverall += totalPrice;
+		if (freeWcChicken == true)
+		{
+			redeemedChicken = 1;
+		}
+		if (freeWokeZero == true)
+		{
+			redeemedSoda = 1;
+		}
 		cout << "Total cost of this meal is " << totalPrice << " dollars" << endl;
 		cout << "Thank you for ordering, your order will be ready soon!" << endl;
-		return totalPrice, (int)freeWcChicken, (int)freeWokeZero, totalOverall;
+		returnList.add(to_string(redeemedChicken));
+		returnList.add(to_string(redeemedSoda));
+		returnList.add(to_string(totalPrice));
+		
+		return returnList;
+		
 	}
+
 }
+
+
 
 string Order::getPopular() {
 	int itemCounts[] = { noOfitem1, noOfitem2, noOfitem3, noOfitem4 };
