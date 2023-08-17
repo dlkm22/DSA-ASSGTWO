@@ -24,6 +24,7 @@ int LoginMenu()
 
     while (option != 0)
     {
+        cout << endl;
         cout << "-----Login Menu-------\n[1] Login \n[2] Register New Account\n[0] Exit Program\n----------------------" << endl;
         cout << "Enter option: ";
         cin >> option;
@@ -55,7 +56,7 @@ int LoginMenu()
             }
             else
             {
-                cout << retrievedUsername << endl;
+                cout << "Wrong username or password entered!" << endl;
             }
         }
         else if (option == 2)
@@ -71,6 +72,13 @@ int LoginMenu()
 
             cout << "Input account type (Staff/Customer): ";
             cin >> accountType;
+
+
+            while (accountType != "Staff" and accountType != "Customer")
+            {
+                cout << "Invalid Input! Please input Staff/Customer" << endl;
+                cin >> accountType;
+            }
 
             if (accountType == "Staff") //If the account is for a staff adds it to the stafflist
             {
@@ -105,6 +113,7 @@ int customerMenu(List foodList, List priceList)
 
     while (option != 0)
     {
+        cout << endl;
         cout << "---Customer Menu---\n[1] Browse Food List \n[2] Create New Order\n[3] Cancel Order\n[4] Redeem Loyalty Points\n[0] Exit\n----------------------" << endl;
         cin >> option;
         if (option == 1)
@@ -151,7 +160,7 @@ int customerMenu(List foodList, List priceList)
             while (ptsOption != 0)
             {
                 cout << "---Loyalty Point Redemption---" << endl;
-                cout << "[1] Free WcChicken\n[2] Free Woke Zero\n[0] Exit Redemption Menu\nAll Rewards Cost 12 pts To Redeem\n You Have " << customer.loyaltyPoints << " loyalty points" << endl;
+                cout << "[1] Free WcChicken\n[2] Free Woke Zero\n[0] Exit Redemption Menu\nAll Rewards Cost 12 pts To Redeem\nYou Have " << customer.loyaltyPoints << " loyalty points" << endl;
         
                 cin >> ptsOption;
                 if (ptsOption == 1 && (customer.loyaltyPoints >= 12))
@@ -203,6 +212,7 @@ int staffMenu()
     Order order;
     while (option != 0)
     {
+        cout << endl;
         cout << "------Staff Menu------\n[1] View Upcoming Orders \n[2] Update Status of Order\n[3] View Customer Information\n[4] View Reports\n[0] Logout\n----------------------" << endl;
         cin >> option;
 
